@@ -1,0 +1,3321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="terracotta">
+  <title>Aula Internacional 1 · Unidad 2：Quiero aprender español 互动学习讲义</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Terracotta style palette */
+      --background: #f9f3eb;
+      --surface-container-low: #f3e9dc;
+      --surface-container: #ede0d0;
+      --surface-container-high: #e4d4c0;
+      --surface-elevated: #fdfaf5;
+
+      /* Ink */
+      --on-surface: #261b15;
+      --on-surface-variant: #57483f;
+
+      /* Borders & hairlines */
+      --outline: #9e8a78;
+      --outline-variant: #dfd0be;
+      --primary-border: #c98a6b;
+      --tertiary-border: #b5d6c9;
+      --secondary-btn-border: #c4b29e;
+
+      /* Accents */
+      --primary: #b84a24;
+      --primary-hover: #9c3d1c;
+      --on-primary: #ffffff;
+      --primary-container: #f7ebe0;
+      --on-primary-container: #7d2e12;
+      --secondary: #8f6524;
+      --secondary-container: #f5ebd9;
+      --tertiary: #1d6356;
+      --tertiary-container: #e1efe9;
+      --on-tertiary-container: #13473d;
+      --error: #b82929;
+      --error-container: #fbe8e8;
+      --on-error: #ffffff;
+
+      /* Semantic */
+      --positive: #1d6356;
+      --positive-container: #e1efe9;
+      --warning: #8f6524;
+      --warning-container: #f7eedc;
+      --focus: #b84a24;
+
+      /* Data series */
+      --data-1: #b84a24;
+      --data-2: #1d6356;
+      --data-3: #b5893e;
+      --data-4: #8c3838;
+      --data-context: #a39384;
+
+      /* Fonts */
+      --font-headline: 'Cormorant Garamond', 'Noto Sans SC', serif;
+      --font-body: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
+      --font-label: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
+
+      /* Type scale (Narrative) */
+      --display-size: clamp(2.35rem, 1.4rem + 3.6vw, 4.1rem);
+      --headline-size: clamp(1.7rem, 1.2rem + 1.6vw, 2.4rem);
+      --subhead-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.45rem);
+      --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+      --label-size: 0.75rem;
+
+      /* Shape & elevation */
+      --rounded-sm: 0.25rem;
+      --rounded: 0.375rem;
+      --rounded-lg: 0.75rem;
+      --rounded-arch: 28px 28px 6px 6px;
+      --rounded-full: 9999px;
+      --soft-shadow: 0 4px 18px rgb(38 27 21 / 0.05);
+      --soft-shadow-raised: 0 8px 28px rgb(38 27 21 / 0.09);
+      --warm-hairline: 1px solid var(--outline-variant);
+      --brass-gradient: linear-gradient(90deg, var(--outline-variant), var(--data-3), var(--outline-variant));
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* Focus rings */
+    :focus-visible {
+      outline: 2.5px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Page container */
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl);
+      padding: var(--space-lg);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Hero section */
+    .hero {
+      background: linear-gradient(180deg, var(--surface-container-low) 0%, var(--background) 100%);
+      border-bottom: var(--warm-hairline);
+      padding-block: var(--space-2xl) var(--space-xl);
+      padding-inline: var(--space-lg);
+    }
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .hero-kicker-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .kicker-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+    .badge-emerald {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--tertiary-container);
+      color: var(--on-tertiary-container);
+      border: 1px solid var(--tertiary-border);
+      padding: var(--space-xs) 0.75rem;
+      border-radius: var(--rounded-full);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .badge-brass {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--secondary-container);
+      color: var(--secondary);
+      border: 1px solid var(--outline-variant);
+      padding: var(--space-xs) 0.65rem;
+      border-radius: var(--rounded-full);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+    }
+    .title {
+      font-family: var(--font-headline);
+      font-weight: 600;
+      font-size: var(--display-size);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    .title em {
+      font-style: italic;
+      color: var(--primary);
+    }
+    .hero-subtitle {
+      margin-top: var(--space-md);
+      max-width: 65ch;
+      color: var(--on-surface-variant);
+      font-size: 1.0625rem;
+    }
+    .ornament-rule {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-block: var(--space-lg);
+      color: var(--secondary);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .ornament-rule::before,
+    .ornament-rule::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--brass-gradient);
+    }
+
+    /* Arch cards (signature Terracotta treatment) */
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    .arch-card {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-arch);
+      padding: var(--space-lg) var(--space-md) var(--space-md);
+      text-align: center;
+      box-shadow: var(--soft-shadow);
+      transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+    }
+    .arch-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--soft-shadow-raised);
+    }
+    .arch-card.is-featured {
+      background: var(--primary-container);
+      border-color: var(--primary-border);
+    }
+    .arch-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+      margin-bottom: var(--space-xs);
+    }
+    .arch-figure {
+      font-family: var(--font-headline);
+      font-weight: 600;
+      font-size: 2.35rem;
+      line-height: 1.1;
+      color: var(--on-surface);
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    .arch-caption {
+      margin-top: var(--space-xs);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--tertiary);
+    }
+
+    /* Workspace layout: sticky TOC sidebar + main reading column */
+    .workspace {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .toc-sidebar {
+      position: sticky;
+      top: var(--space-lg);
+      background: var(--surface-container-low);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      box-shadow: var(--soft-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .toc-title {
+      font-family: var(--font-headline);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+      color: var(--on-surface);
+      padding-bottom: var(--space-sm);
+      border-bottom: var(--warm-hairline);
+    }
+    .toc-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .toc-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      width: 100%;
+      min-height: 44px;
+      padding: var(--space-sm) 0.75rem;
+      border-radius: var(--rounded);
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--on-surface-variant);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .toc-link:hover {
+      background: var(--surface-container);
+      color: var(--on-surface);
+    }
+    .toc-link.is-active {
+      background: var(--primary-container);
+      border-color: var(--primary-border);
+      color: var(--on-primary-container);
+      font-weight: 700;
+    }
+    .toc-num {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .sidebar-progress {
+      background: var(--surface-elevated);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .progress-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8125rem;
+      color: var(--on-surface-variant);
+    }
+    .progress-bar-track {
+      height: 6px;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded-full);
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--tertiary);
+      border-radius: var(--rounded-full);
+      transition: width var(--dur-short) var(--ease-out);
+    }
+
+    /* Floating mobile / quick jump bar */
+    .floating-nav {
+      display: none;
+      position: fixed;
+      bottom: var(--space-md);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 40;
+      background: var(--surface-elevated);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--rounded-full);
+      box-shadow: var(--soft-shadow-raised);
+      padding: var(--space-xs) var(--space-sm);
+      gap: var(--space-xs);
+      max-width: calc(100vw - 2rem);
+      overflow-x: auto;
+      align-items: center;
+    }
+    .floating-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 44px;
+      padding: 0 0.75rem;
+      border-radius: var(--rounded-full);
+      border: none;
+      background: transparent;
+      color: var(--on-surface-variant);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .floating-nav-btn.is-active {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+
+    /* Main content sections */
+    .main-flow {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xl);
+    }
+    .lesson-section {
+      scroll-margin-top: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .section-header {
+      border-bottom: 1.5px solid var(--outline-variant);
+      padding-bottom: var(--space-md);
+    }
+    .section-kicker {
+      display: inline-block;
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: var(--space-xs);
+    }
+    .section-title {
+      font-family: var(--font-headline);
+      font-size: var(--headline-size);
+      font-weight: 600;
+      line-height: 1.15;
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--primary);
+    }
+    .section-desc {
+      margin: var(--space-sm) 0 0;
+      color: var(--on-surface-variant);
+      max-width: 65ch;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      min-height: 44px;
+      padding: 0.5rem 1.15rem;
+      border-radius: var(--rounded-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  color var(--dur-micro) var(--ease-out),
+                  box-shadow var(--dur-micro) var(--ease-out),
+                  transform var(--dur-micro) var(--ease-out);
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-hover);
+      box-shadow: var(--soft-shadow);
+    }
+    .btn-secondary {
+      background: var(--surface-elevated);
+      color: var(--on-surface);
+      border-color: var(--secondary-btn-border);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background: var(--surface-container-low);
+    }
+    .btn-emerald {
+      background: var(--tertiary-container);
+      color: var(--on-tertiary-container);
+      border-color: var(--tertiary-border);
+    }
+    .btn-emerald:hover:not(:disabled) {
+      background: var(--tertiary);
+      color: var(--on-primary);
+    }
+    .btn-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 0.65rem;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      color: var(--primary);
+      cursor: pointer;
+      flex-shrink: 0;
+      gap: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .btn-icon:hover {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+    .btn-icon.is-playing {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-container);
+    }
+
+    /* Objectives cards */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .objective-panel {
+      background: var(--surface-container-low);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded-arch);
+      padding: var(--space-lg);
+      box-shadow: var(--soft-shadow);
+    }
+    .objective-panel.is-highlight {
+      background: var(--primary-container);
+      border-color: var(--primary-border);
+    }
+    .objective-panel h3 {
+      font-family: var(--font-headline);
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: var(--space-sm) 0;
+      color: var(--on-surface);
+    }
+    .objective-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--on-surface-variant);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .objective-list li strong { color: var(--on-surface); }
+
+    /* Audio control toolbar */
+    .audio-toolbar {
+      background: var(--surface-container);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+    .toolbar-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      gap: var(--space-md);
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .field-label {
+      font-size: var(--label-size);
+      font-weight: 700;
+      color: var(--on-surface-variant);
+    }
+    .styled-select, .styled-input {
+      min-height: 44px;
+      padding: 0.5rem 0.85rem;
+      background: var(--surface-elevated);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      color: var(--on-surface);
+      font-size: 0.9375rem;
+    }
+    .styled-select {
+      padding-right: 2.25rem;
+    }
+    .styled-select:focus, .styled-input:focus {
+      border-color: var(--primary);
+      outline: 2px solid var(--primary-container);
+    }
+    .speech-status-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      min-height: 44px;
+      padding: 0.35rem 0.85rem;
+      background: var(--surface-elevated);
+      border-radius: var(--rounded-full);
+      border: var(--warm-hairline);
+    }
+    .speech-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--rounded-full);
+      background: var(--outline);
+      flex-shrink: 0;
+    }
+    .speech-status-bar.is-active .speech-status-dot {
+      background: var(--primary);
+    }
+    .speech-status-bar.is-active {
+      color: var(--on-primary-container);
+      border-color: var(--primary-border);
+      background: var(--primary-container);
+    }
+
+    /* Vocabulary group blocks */
+    .vocab-group {
+      background: var(--surface-elevated);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--soft-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .vocab-group-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: var(--warm-hairline);
+    }
+    .vocab-group-title-wrap h3 {
+      font-family: var(--font-headline);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .vocab-group-title-wrap p {
+      margin: var(--space-xs) 0 0;
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+    }
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .vocab-card {
+      container-type: inline-size;
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      transition: border-color var(--dur-short) var(--ease-out),
+                  box-shadow var(--dur-short) var(--ease-out),
+                  background-color var(--dur-short) var(--ease-out);
+    }
+    .vocab-card.is-speaking {
+      background: var(--primary-container);
+      border-color: var(--primary);
+      box-shadow: var(--soft-shadow-raised);
+    }
+    .vocab-card.is-mastered {
+      border-color: var(--tertiary-border);
+    }
+    .vocab-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+    .vocab-word-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .vocab-word-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: var(--space-sm);
+    }
+    .vocab-es {
+      font-family: var(--font-headline);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      line-height: 1.15;
+    }
+    .vocab-pos {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--on-tertiary-container);
+      background: var(--tertiary-container);
+      padding: 2px 8px;
+      border-radius: var(--rounded-full);
+    }
+    .vocab-zh {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .vocab-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .master-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 0.65rem;
+      border-radius: var(--rounded-full);
+      border: 1px solid var(--outline-variant);
+      background: var(--surface-elevated);
+      color: var(--on-surface-variant);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      gap: 4px;
+    }
+    .master-toggle.is-checked {
+      background: var(--tertiary);
+      border-color: var(--tertiary);
+      color: var(--on-primary);
+    }
+
+    .chunk-box {
+      background: var(--surface-elevated);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+    .chunk-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: block;
+    }
+    .chunk-es {
+      font-weight: 700;
+      color: var(--on-surface);
+      font-size: 0.95rem;
+    }
+    .chunk-zh {
+      font-size: 0.85rem;
+      color: var(--on-surface-variant);
+      margin-left: var(--space-xs);
+    }
+
+    .sentence-box {
+      background: var(--surface-container);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--rounded) var(--rounded) 0;
+      padding: var(--space-sm) 0.75rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+    .sentence-es {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    .sentence-zh {
+      font-size: 0.85rem;
+      color: var(--on-surface-variant);
+      margin: 2px 0 0;
+    }
+
+    /* Grammar panels & tables */
+    .grammar-card {
+      background: var(--surface-elevated);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--soft-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .grammar-card-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+    .grammar-card h3 {
+      font-family: var(--font-headline);
+      font-size: 1.55rem;
+      font-weight: 600;
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .table-scroll {
+      overflow-x: auto;
+      border: var(--warm-hairline);
+      border-radius: var(--rounded);
+      background: var(--surface-elevated);
+    }
+    table.grammar-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9375rem;
+    }
+    table.grammar-table th {
+      background: var(--surface-container);
+      color: var(--on-surface);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1.5px solid var(--outline-variant);
+    }
+    table.grammar-table td {
+      padding: 0.65rem 0.9rem;
+      border-bottom: var(--warm-hairline);
+      vertical-align: middle;
+    }
+    table.grammar-table tr:last-child td { border-bottom: none; }
+    .stem-text { color: var(--on-surface); font-weight: 500; }
+    .ending-text { color: var(--primary); font-weight: 700; }
+    .irregular-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-container);
+      padding: 1px 6px;
+      border-radius: var(--rounded-sm);
+      margin-left: 4px;
+    }
+    .regular-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--on-tertiary-container);
+      background: var(--tertiary-container);
+      padding: 1px 6px;
+      border-radius: var(--rounded-sm);
+      margin-left: 4px;
+    }
+    .inline-play-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 36px;
+      padding: 4px 10px;
+      border-radius: var(--rounded-full);
+      border: 1px solid var(--outline-variant);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      font-size: 0.9375rem;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .inline-play-chip:hover {
+      border-color: var(--primary);
+      background: var(--primary-container);
+    }
+    .inline-play-chip svg { color: var(--primary); }
+
+    /* Interactive Sentence Lab */
+    .lab-box {
+      background: var(--surface-container-low);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .lab-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+      gap: var(--space-md);
+      align-items: end;
+    }
+    .lab-output {
+      background: var(--surface-elevated);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+    .lab-sentence-es {
+      font-family: var(--font-headline);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--on-surface);
+    }
+    .lab-sentence-zh {
+      font-size: 0.9375rem;
+      color: var(--on-surface-variant);
+      margin-top: 2px;
+    }
+
+    /* Verb switcher pills */
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .verb-pill {
+      min-height: 44px;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--rounded-full);
+      border: 1px solid var(--outline-variant);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .verb-pill.is-active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--on-primary);
+    }
+
+    /* Por / Para / Porque 3-column comparison */
+    .trio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .trio-card {
+      background: var(--surface-container-low);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .trio-card.is-por { border-top: 4px solid var(--data-1); }
+    .trio-card.is-para { border-top: 4px solid var(--data-2); }
+    .trio-card.is-porque { border-top: 4px solid var(--data-3); }
+    .trio-formula {
+      font-family: var(--font-headline);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+    .callout-box {
+      background: var(--warning-container);
+      border-left: 4px solid var(--secondary);
+      border-radius: 0 var(--rounded) var(--rounded) 0;
+      padding: var(--space-md);
+      font-size: 0.9375rem;
+    }
+    .callout-box strong { color: var(--on-surface); }
+
+    /* Skill Scale interactive spectrum */
+    .scale-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .scale-btn {
+      min-height: 44px;
+      padding: 0.45rem 0.95rem;
+      border-radius: var(--rounded-full);
+      border: 1px solid var(--outline-variant);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .scale-btn.is-active {
+      background: var(--tertiary);
+      border-color: var(--tertiary);
+      color: var(--on-primary);
+    }
+
+    /* Dialogues */
+    .dialogue-card {
+      background: var(--surface-elevated);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--soft-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .dialogue-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding-bottom: var(--space-md);
+      border-bottom: var(--warm-hairline);
+    }
+    .dialogue-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .dialogue-lines {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .dialogue-line {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      background: var(--surface-container-low);
+      border: 1px solid transparent;
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .dialogue-line.is-speaking {
+      background: var(--primary-container);
+      border-color: var(--primary);
+    }
+    .speaker-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--on-tertiary-container);
+      background: var(--tertiary-container);
+      padding: 2px 8px;
+      border-radius: var(--rounded-sm);
+      margin-right: var(--space-xs);
+    }
+    .dialogue-es {
+      font-weight: 500;
+      color: var(--on-surface);
+    }
+    .dialogue-zh {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      margin-top: 4px;
+    }
+    .dialogue-zh.is-hidden { display: none; }
+
+    /* Exercises */
+    .exercise-toolbar {
+      background: var(--surface-container);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+    .exercise-score {
+      font-family: var(--font-headline);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+    .exercise-block {
+      background: var(--surface-elevated);
+      border: var(--warm-hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--soft-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .exercise-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .exercise-item {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .exercise-item.is-correct {
+      border-color: var(--positive);
+      background: var(--positive-container);
+    }
+    .exercise-item.is-wrong {
+      border-color: var(--error);
+      background: var(--error-container);
+    }
+    .exercise-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .exercise-num {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary);
+      min-width: 1.75rem;
+    }
+    .exercise-feedback {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .exercise-feedback.is-ok { color: var(--on-tertiary-container); }
+    .exercise-feedback.is-err { color: var(--error); }
+
+    .mc-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-xs);
+    }
+    .mc-btn {
+      min-height: 44px;
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--rounded);
+      border: 1px solid var(--outline-variant);
+      background: var(--surface-elevated);
+      color: var(--on-surface);
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-align: left;
+    }
+    .mc-btn.is-selected {
+      background: var(--primary-container);
+      border-color: var(--primary);
+      color: var(--on-primary-container);
+      font-weight: 700;
+    }
+
+    /* Solutions accordion */
+    .solutions-panel {
+      background: var(--surface-container-low);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .solutions-body.is-collapsed { display: none; }
+    .solution-item {
+      padding: var(--space-sm) 0;
+      border-bottom: var(--warm-hairline);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+    .solution-item:last-child { border-bottom: none; }
+
+    /* Footer */
+    .site-footer {
+      border-top: var(--warm-hairline);
+      padding: var(--space-xl) var(--space-lg) var(--space-3xl);
+      color: var(--on-surface-variant);
+      font-size: 0.875rem;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 960px) {
+      .workspace {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .toc-sidebar {
+        display: none;
+      }
+      .floating-nav {
+        display: flex;
+      }
+    }
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-md);
+        gap: var(--space-lg);
+      }
+      .hero {
+        padding-block: var(--space-xl) var(--space-lg);
+        padding-inline: var(--space-md);
+      }
+      .vocab-group, .grammar-card, .dialogue-card, .exercise-block {
+        padding: var(--space-md);
+      }
+      aside { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker-row">
+        <span class="kicker-label">Aula Internacional 1 · Unidad 2 · CEFR A1</span>
+        <span class="badge-emerald">
+          <i data-lucide="volume-2" width="15" height="15" aria-hidden="true"></i>
+          <span>支持 es-ES 西语原生语音朗读</span>
+        </span>
+      </div>
+
+      <h1 class="title">Quiero aprender <em>español</em></h1>
+      <p class="hero-subtitle">
+        《Aula Internacional 1》第二单元全维互动学习讲义。拒绝孤立背单词——通过高频词块、真实语境例句、核心动词变位交互表、课堂情景对话与即时批改练习，系统掌握“表达学习意图与原因”的交际能力。
+      </p>
+
+      <div class="ornament-rule" aria-hidden="true">&#9670; Unidad 2 · 学习地图 &#9670;</div>
+
+      <div class="arch-grid">
+        <div class="arch-card is-featured">
+          <div class="arch-label">核心语境词条</div>
+          <div class="arch-figure">30</div>
+          <div class="arch-caption">词块 + 真实例句 + 连续朗读</div>
+        </div>
+        <div class="arch-card">
+          <div class="arch-label">重点语法模块</div>
+          <div class="arch-figure">5</div>
+          <div class="arch-caption">querer · 规则变位 · por/para/porque</div>
+        </div>
+        <div class="arch-card">
+          <div class="arch-label">教材情景对话</div>
+          <div class="arch-figure">2</div>
+          <div class="arch-caption">双语对照 · 逐句听读</div>
+        </div>
+        <div class="arch-card">
+          <div class="arch-label">互动巩固练习</div>
+          <div class="arch-figure">29</div>
+          <div class="arch-caption">即时批改 · 详尽解析</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-grid">
+    <div class="workspace">
+
+      <!-- Sticky Desktop TOC Sidebar -->
+      <aside class="toc-sidebar" aria-label="单元学习目录">
+        <h2 class="toc-title">单元目录导航</h2>
+        <nav aria-label="章节跳转">
+          <ul class="toc-list">
+            <li>
+              <a class="toc-link is-active" href="#sec-objetivos" data-section="sec-objetivos">
+                <span><span class="toc-num">01</span> 学习目标</span>
+              </a>
+            </li>
+            <li>
+              <a class="toc-link" href="#sec-lexico" data-section="sec-lexico">
+                <span><span class="toc-num">02</span> 核心词汇与语境</span>
+              </a>
+            </li>
+            <li>
+              <a class="toc-link" href="#sec-gramatica" data-section="sec-gramatica">
+                <span><span class="toc-num">03</span> 重点语法精讲</span>
+              </a>
+            </li>
+            <li>
+              <a class="toc-link" href="#sec-dialogos" data-section="sec-dialogos">
+                <span><span class="toc-num">04</span> 课文情景对话</span>
+              </a>
+            </li>
+            <li>
+              <a class="toc-link" href="#sec-ejercicios" data-section="sec-ejercicios">
+                <span><span class="toc-num">05</span> 巩固练习与答案</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-progress">
+          <div class="progress-row">
+            <span>词汇掌握进度</span>
+            <strong id="sidebar-vocab-count">0 / 30</strong>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="sidebar-vocab-bar"></div>
+          </div>
+          <div class="progress-row">
+            <span>练习答对题数</span>
+            <strong id="sidebar-quiz-count">0 / 29</strong>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="sidebar-quiz-bar"></div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary" onclick="stopAllSpeech()">
+          <i data-lucide="square" width="15" height="15" aria-hidden="true"></i>
+          <span>停止当前朗读</span>
+        </button>
+      </aside>
+
+      <!-- Main Narrative Column -->
+      <main class="main-flow">
+
+        <!-- SECTION 1: OBJETIVOS -->
+        <section id="sec-objetivos" class="lesson-section">
+          <div class="section-header">
+            <span class="section-kicker">01 · Objetivos Didácticos</span>
+            <h2 class="section-title">本单元学习目标：从“想做什么”到“为什么学”</h2>
+            <p class="section-desc">
+              按照《Aula Internacional 1》的教学框架，第二单元的核心任务是决定并商讨你在西语课程中想做的事，同时能够说明自己学习语言的动机与周末计划。
+            </p>
+          </div>
+
+          <div class="objectives-grid">
+            <article class="objective-panel is-highlight">
+              <span class="badge-brass">交际目标 · Comunicación</span>
+              <h3>表达意图、动机与语言能力</h3>
+              <ul class="objective-list">
+                <li><strong>Expresar intenciones y deseos</strong>：用 <em>querer + 动词原形</em> 说明短期计划与学习愿望。</li>
+                <li><strong>Explicar motivos y finalidad</strong>：区分原因与目的，清晰回答 <em>¿Por qué estudias español?</em></li>
+                <li><strong>Hablar de habilidades lingüísticas</strong>：用程度副词客观描述自己在各门语言中的听说读写水平。</li>
+              </ul>
+            </article>
+
+            <article class="objective-panel">
+              <span class="badge-emerald">语法重点 · Gramática</span>
+              <h3>规则变位与核心功能词</h3>
+              <ul class="objective-list">
+                <li><strong>直陈式现在时规则变位</strong>：完整掌握 <em>-ar</em>、<em>-er</em>、<em>-ir</em> 三大词尾规律。</li>
+                <li><strong>不规则情态动词 querer</strong>：词根 <em>e → ie</em> 变化与不定式搭配。</li>
+                <li><strong>por / para / porque</strong>：句法搭配铁律与正字法辨析。</li>
+                <li><strong>定冠词 el / la / los / las</strong>：阴阳性单复数及重读 a 开头特例。</li>
+              </ul>
+            </article>
+
+            <article class="objective-panel">
+              <span class="badge-emerald">词汇领域 · Léxico</span>
+              <h3>三大高频主题词群</h3>
+              <ul class="objective-list">
+                <li><strong>语言与学习</strong>：常见国家语言名称与母语表达（<em>la lengua materna</em>）。</li>
+                <li><strong>语言课堂活动</strong>：查词典、听西语歌、学语法、与母语者交流等。</li>
+                <li><strong>休闲与日常意图</strong>：郊游、夜出、做特色菜、海外生活等动词词块。</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- SECTION 2: LÉXICO CON CONTEXTO -->
+        <section id="sec-lexico" class="lesson-section">
+          <div class="section-header">
+            <span class="section-kicker">02 · Léxico con Contexto</span>
+            <h2 class="section-title">核心词汇与语境搭配：用<em>词块与例句</em>建立记忆网络</h2>
+            <p class="section-desc">
+              词汇学习建议“词不离句”：每个词条均配备常用词块（Lexical Chunk）和真实生活例句。点击任意小喇叭即可单独跟读，或点击每组顶部的“一键连续朗读本组单词”开启沉浸式听读。
+            </p>
+          </div>
+
+          <div class="audio-toolbar">
+            <div class="toolbar-controls">
+              <div class="field-group">
+                <label class="field-label" for="speech-rate-select">朗读语速 (es-ES)</label>
+                <select id="speech-rate-select" class="styled-select" onchange="updateSpeechRate(this.value)">
+                  <option value="0.75">0.75× 慢速跟读</option>
+                  <option value="0.95" selected>1.0× 标准教学语速</option>
+                  <option value="1.15">1.15× 自然偏快</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="seq-mode-select">连读内容范围</label>
+                <select id="seq-mode-select" class="styled-select" onchange="updateSeqMode(this.value)">
+                  <option value="word-chunk" selected>单词 + 词块（推荐连贯复习）</option>
+                  <option value="full">单词 + 词块 + 语境例句</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="vocab-filter-select">词汇筛选</label>
+                <select id="vocab-filter-select" class="styled-select" onchange="filterVocabCards(this.value)">
+                  <option value="all">显示全部 30 个词条</option>
+                  <option value="unmastered">仅看尚未掌握的词条</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:var(--space-sm); flex-wrap:wrap;">
+              <div id="speech-status" class="speech-status-bar" aria-live="polite">
+                <span class="speech-status-dot" aria-hidden="true"></span>
+                <span id="speech-status-text">语音就绪（es-ES）</span>
+              </div>
+              <button type="button" class="btn btn-secondary" onclick="stopAllSpeech()">
+                <i data-lucide="square" width="15" height="15" aria-hidden="true"></i>
+                <span>停止</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="vocab-groups-container" style="display:flex; flex-direction:column; gap:var(--space-xl);"></div>
+        </section>
+
+        <!-- SECTION 3: GRAMÁTICA CLAVE -->
+        <section id="sec-gramatica" class="lesson-section">
+          <div class="section-header">
+            <span class="section-kicker">03 · Gramática Clave</span>
+            <h2 class="section-title">重点语法深度讲解：掌握<em>意图、变位与逻辑连接</em></h2>
+            <p class="section-desc">
+              在西班牙语中，动词词尾本身就包含了人称信息，因此主格代词（yo, tú…）常可省略。以下五个语法模块涵盖了本单元所有核心语言规律。
+            </p>
+          </div>
+
+          <!-- 3.1 Querer + Infinitivo -->
+          <article class="grammar-card" id="gram-querer">
+            <div class="grammar-card-head">
+              <div>
+                <span class="badge-brass">语法模块 3.1</span>
+                <h3>动词 querer + 动词不定式（表达意图与愿望）</h3>
+              </div>
+              <button type="button" class="btn btn-secondary" onclick="speakText('Yo quiero aprender español. ¿Qué quieres hacer este fin de semana?')">
+                <i data-lucide="volume-2" width="16" height="16" aria-hidden="true"></i>
+                <span>朗读示范例句</span>
+              </button>
+            </div>
+
+            <p style="margin:0; color:var(--on-surface-variant);">
+              <strong>querer</strong>（想要；爱）是一个词根不规则动词：在单数所有人称和第三人称复数中，词根中的 <strong>e</strong> 裂变为 <strong>ie</strong>；而第一、二人称复数（<em>nosotros/as, vosotros/as</em>）保持词根 <strong>quer-</strong> 不变。后接动词原形（<em>-ar / -er / -ir</em>）构成 <strong>querer + infinitivo</strong>，用于表达当前的意愿或未来计划。
+            </p>
+
+            <div class="table-scroll">
+              <table class="grammar-table">
+                <thead>
+                  <tr>
+                    <th>人称代词</th>
+                    <th>querer 现在时变位</th>
+                    <th>词根变化</th>
+                    <th>实用例句（点击听读）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>yo</strong>（我）</td>
+                    <td><span class="stem-text">qu</span><span class="ending-text">ie</span><span class="stem-text">r</span><span class="ending-text">o</span> <span class="irregular-tag">e→ie</span></td>
+                    <td>词根裂变</td>
+                    <td>
+                      <button type="button" class="inline-play-chip" onclick="speakText('Yo quiero descansar y leer un libro.')">
+                        <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                        <span>Quiero descansar y leer un libro.</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>tú</strong>（你）</td>
+                    <td><span class="stem-text">qu</span><span class="ending-text">ie</span><span class="stem-text">r</span><span class="ending-text">es</span> <span class="irregular-tag">e→ie</span></td>
+                    <td>词根裂变</td>
+                    <td>
+                      <button type="button" class="inline-play-chip" onclick="speakText('¿Qué quieres hacer este fin de semana?')">
+                        <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                        <span>¿Qué quieres hacer este fin de semana?</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>él / ella / usted</strong>（他/她/您）</td>
+                    <td><span class="stem-text">qu</span><span class="ending-text">ie</span><span class="stem-text">r</span><span class="ending-text">e</span> <span class="irregular-tag">e→ie</span></td>
+                    <td>词根裂变</td>
+                    <td>
+                      <button type="button" class="inline-play-chip" onclick="speakText('Virginia quiere ir al teatro y hacer fotos.')">
+                        <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                        <span>Virginia quiere ir al teatro y hacer fotos.</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>nosotros / nosotras</strong>（我们）</td>
+                    <td><span class="stem-text">quer</span><span class="ending-text">emos</span> <span class="regular-tag">不变</span></td>
+                    <td>保持 quer-</td>
+                    <td>
+                      <button type="button" class="inline-play-chip" onclick="speakText('Nosotros queremos viajar por Latinoamérica.')">
+                        <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                        <span>Queremos viajar por Latinoamérica.</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>vosotros / vosotras</strong>（你们·西班牙）</td>
+                    <td><span class="stem-text">quer</span><span class="ending-text">éis</span> <span class="regular-tag">不变</span></td>
+                    <td>保持 quer-</td>
+                    <td>
+                      <button type="button" class="inline-play-chip" onclick="speakText('¿Qué queréis estudiar en este curso?')">
+                        <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                        <span>¿Qué queréis estudiar en este curso?</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>ellos / ellas / ustedes</strong>（他们/诸位）</td>
+                    <td><span class="stem-text">qu</span><span class="ending-text">ie</span><span class="stem-text">r</span><span class="ending-text">en</span> <span class="irregular-tag">e→ie</span></td>
+                    <td>词根裂变</td>
+                    <td>
+                      <button type="button" class="inline-play-chip" onclick="speakText('Ana y Rocío quieren ir de compras.')">
+                        <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                        <span>Ana y Rocío quieren ir de compras.</span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Interactive Lab -->
+            <div class="lab-box">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:var(--space-sm);">
+                <strong>互动造句实验室 · Constructor de intenciones</strong>
+                <span class="badge-emerald">选择主语与活动，即时生成完整西语意图句</span>
+              </div>
+              <div class="lab-controls">
+                <div class="field-group">
+                  <label class="field-label" for="lab-subject">1. 选择人称主语</label>
+                  <select id="lab-subject" class="styled-select" onchange="updateQuererLab()">
+                    <option value="0">Yo（我）</option>
+                    <option value="1">Tú（你）</option>
+                    <option value="2">Virginia / Él（她/他）</option>
+                    <option value="3">Nosotros（我们）</option>
+                    <option value="4">Vosotros（你们）</option>
+                    <option value="5">Ana y Rocío / Ellos（她们/他们）</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="lab-activity">2. 选择动词不定式活动</label>
+                  <select id="lab-activity" class="styled-select" onchange="updateQuererLab()">
+                    <option value="0">aprender español（学西班牙语）</option>
+                    <option value="1">hacer deporte（做运动）</option>
+                    <option value="2">ir de excursión（去郊游）</option>
+                    <option value="3">visitar el Museo del Prado（参观普拉多博物馆）</option>
+                    <option value="4">salir a cenar con amigos（和朋友出去吃晚饭）</option>
+                    <option value="5">vivir en España（在西班牙生活）</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="lab-time">3. 搭配时间状语</label>
+                  <select id="lab-time" class="styled-select" onchange="updateQuererLab()">
+                    <option value="0">este fin de semana（这个周末）</option>
+                    <option value="1">este año（今年）</option>
+                    <option value="2">en este curso（在这个课程里）</option>
+                    <option value="3">mañana por la tarde（明天下午）</option>
+                  </select>
+                </div>
+              </div>
+              <div class="lab-output">
+                <div>
+                  <div id="lab-result-es" class="lab-sentence-es">Yo quiero aprender español este fin de semana.</div>
+                  <div id="lab-result-zh" class="lab-sentence-zh">这个周末我想学西班牙语。</div>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="speakLabSentence()">
+                  <i data-lucide="volume-2" width="16" height="16" aria-hidden="true"></i>
+                  <span>朗读该句</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3.2 Presente Regular -->
+          <article class="grammar-card" id="gram-presente">
+            <div class="grammar-card-head">
+              <div>
+                <span class="badge-brass">语法模块 3.2</span>
+                <h3>直陈式现在时规则动词变位（-ar / -er / -ir）</h3>
+              </div>
+              <button type="button" class="btn btn-secondary" onclick="speakActiveVerbSet()">
+                <i data-lucide="volume-2" width="16" height="16" aria-hidden="true"></i>
+                <span>连续朗读当前动词6种变位</span>
+              </button>
+            </div>
+
+            <p style="margin:0; color:var(--on-surface-variant);">
+              西班牙语动词原形按词尾分为三大变位组：第一变位（<strong>-ar</strong>）、第二变位（<strong>-er</strong>）和第三变位（<strong>-ir</strong>）。规则动词变位时，去掉词尾 <em>-ar / -er / -ir</em> 得到词干，再按人称加上对应词尾。注意：第二、第三变位仅在 <em>nosotros</em> 和 <em>vosotros</em> 上不同！
+            </p>
+
+            <div>
+              <span class="field-label" style="display:block; margin-bottom:var(--space-xs);">点击切换示范动词，下方变位表同步更新：</span>
+              <div class="pill-row" id="verb-switcher-row"></div>
+            </div>
+
+            <div class="table-scroll">
+              <table class="grammar-table">
+                <thead>
+                  <tr>
+                    <th>人称</th>
+                    <th>第一变位 (-ar)</th>
+                    <th>第二变位 (-er)</th>
+                    <th>第三变位 (-ir)</th>
+                    <th>当前选中示范词</th>
+                  </tr>
+                </thead>
+                <tbody id="regular-verb-tbody"></tbody>
+              </table>
+            </div>
+
+            <div class="callout-box">
+              <strong>教材语法提醒（人称前置词 a 与缩合冠词）：</strong>
+              当直接宾语指“具体的人”时，动词后必须加上前置词 <strong>a</strong>（如：<em>Quiero conocer <strong>a</strong> mi compañero de clase.</em> 我想认识我的同学）；遇到阳性单数定冠词 <em>el</em> 时发生缩合：<strong>a + el = al</strong>（如：<em>conocer <strong>al</strong> hermano de Flavia</em> / <em>ir <strong>al</strong> cine</em>）；<strong>de + el = del</strong>（如：<em>del mundo hispano</em>）。
+            </div>
+          </article>
+
+          <!-- 3.3 Por / Para / Porque -->
+          <article class="grammar-card" id="gram-por-para">
+            <div class="grammar-card-head">
+              <div>
+                <span class="badge-brass">语法模块 3.3</span>
+                <h3>原因与目的的表达：Por vs. Para vs. Porque</h3>
+              </div>
+              <button type="button" class="btn btn-secondary" onclick="speakText('¿Por qué estudias español? Por mi trabajo. Para viajar por Latinoamérica. Porque quiero vivir en España.')">
+                <i data-lucide="volume-2" width="16" height="16" aria-hidden="true"></i>
+                <span>听读三组经典对比</span>
+              </button>
+            </div>
+
+            <p style="margin:0; color:var(--on-surface-variant);">
+              回答“你为什么学西班牙语？（<em>¿Por qué estudias español?</em>）”时，选择 <strong>por</strong>、<strong>para</strong> 还是 <strong>porque</strong>，取决于后面跟随的<strong>词性结构</strong>。记住下面三条黄金公式即可准确区分：
+            </p>
+
+            <div class="trio-grid">
+              <div class="trio-card is-por">
+                <span class="badge-brass">原因 / 缘由</span>
+                <div class="trio-formula">por + 名词 (sustantivo)</div>
+                <p style="margin:0; font-size:0.9rem; color:var(--on-surface-variant);">
+                  表示促使行动的原因或外部条件（“因为…… / 由于……”），后面只能接名词或名词短语，不能接动词。
+                </p>
+                <button type="button" class="inline-play-chip" onclick="speakText('Estudio español por mi trabajo.')">
+                  <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                  <span>Estudio español <strong>por</strong> mi trabajo.</span>
+                </button>
+                <span style="font-size:0.85rem; color:var(--on-surface-variant);">我学西班牙语是因为我的工作。（por mi novio / por el arte）</span>
+              </div>
+
+              <div class="trio-card is-para">
+                <span class="badge-emerald">目的 / 目标</span>
+                <div class="trio-formula">para + 动词原形 (infinitivo)</div>
+                <p style="margin:0; font-size:0.9rem; color:var(--on-surface-variant);">
+                  表示做某事的目的或打算达成的目标（“为了…… / 以便……”），后接未变位的动词原形（<em>-ar/-er/-ir</em>）。
+                </p>
+                <button type="button" class="inline-play-chip" onclick="speakText('Estudio español para viajar por Latinoamérica.')">
+                  <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                  <span>Estudio español <strong>para</strong> viajar por Latinoamérica.</span>
+                </button>
+                <span style="font-size:0.85rem; color:var(--on-surface-variant);">我学西班牙语是为了去拉丁美洲旅行。（para chatear / para leer）</span>
+              </div>
+
+              <div class="trio-card is-porque">
+                <span class="badge-emerald">原因从句</span>
+                <div class="trio-formula">porque + 变位动词句</div>
+                <p style="margin:0; font-size:0.9rem; color:var(--on-surface-variant);">
+                  引导完整的原因状语从句（“因为……”），后面必须接一个已经按人称变位的动词句子。
+                </p>
+                <button type="button" class="inline-play-chip" onclick="speakText('Estudio español porque quiero vivir en España.')">
+                  <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                  <span>Estudio español <strong>porque</strong> quiero vivir en España.</span>
+                </button>
+                <span style="font-size:0.85rem; color:var(--on-surface-variant);">我学西班牙语是因为我想住在西班牙。（porque mi novio es español）</span>
+              </div>
+            </div>
+
+            <div class="callout-box">
+              <strong>正字法与易错提醒：</strong><br>
+              1. <strong>¿Por qué? vs. Porque</strong>：提问“为什么？”时必须写成两个词并带重音符号（<strong>¿por qué?</strong>）；回答“因为……”时合写为一个词且无重音（<strong>porque</strong>）。<br>
+              2. <strong>常见错误规避</strong>：不能说 <em>*Estudio español porque viajar</em>（接动词原形必须用 <strong>para viajar</strong> 或补全变位动词 <strong>porque quiero viajar</strong>）；也不能在表达工作原因时用 <em>*para mi trabajo</em>，应说 <strong>por mi trabajo</strong>。
+            </div>
+          </article>
+
+          <!-- 3.4 El artículo determinado -->
+          <article class="grammar-card" id="gram-articulo">
+            <div class="grammar-card-head">
+              <div>
+                <span class="badge-brass">语法模块 3.4</span>
+                <h3>定冠词（El artículo determinado）</h3>
+              </div>
+              <button type="button" class="btn btn-secondary" onclick="speakText('el pueblo, los pueblos, la ciudad, las ciudades, el aula, las aulas, el agua')">
+                <i data-lucide="volume-2" width="16" height="16" aria-hidden="true"></i>
+                <span>听读定冠词搭配</span>
+              </button>
+            </div>
+
+            <p style="margin:0; color:var(--on-surface-variant);">
+              定冠词用于特指已知的人或事物（包括语言、星期、抽象名词等），必须与所修饰名词保持<strong>性（阴/阳）</strong>与<strong>数（单/复）</strong>的一致。
+            </p>
+
+            <div class="table-scroll">
+              <table class="grammar-table">
+                <thead>
+                  <tr>
+                    <th>性 / 数</th>
+                    <th>单数 (Singular)</th>
+                    <th>复数 (Plural)</th>
+                    <th>规则与说明</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>阳性 (Masculino)</strong></td>
+                    <td>
+                      <button type="button" class="inline-play-chip" onclick="speakText('el pueblo, el idioma, el cine')">
+                        <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                        <span><strong>el</strong> pueblo / el idioma</span>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="inline-play-chip" onclick="speakText('los pueblos, los idiomas')">
+                        <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                        <span><strong>los</strong> pueblos / los idiomas</span>
+                      </button>
+                    </td>
+                    <td>注意以 <em>-ma</em> 结尾的词如 <em>el idioma, el tema, el clima</em> 均为阳性。</td>
+                  </tr>
+                  <tr>
+                    <td><strong>阴性 (Femenino)</strong></td>
+                    <td>
+                      <button type="button" class="inline-play-chip" onclick="speakText('la ciudad, la lengua, la clase')">
+                        <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                        <span><strong>la</strong> ciudad / la lengua</span>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="inline-play-chip" onclick="speakText('las ciudades, las lenguas')">
+                        <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                        <span><strong>las</strong> ciudades / las lenguas</span>
+                      </button>
+                    </td>
+                    <td>以 <em>-dad, -ción, -sión</em> 结尾的名词通常为阴性（<em>la actividad, la canción</em>）。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout-box">
+              <strong>语音特例提醒（重读 a- / ha- 开头的阴性单数名词）：</strong>
+              当阴性单数名词以重读 <strong>a-</strong> 或 <strong>ha-</strong> 开头时（如 <em>aula</em> 教室、<em>agua</em> 水、<em>ave</em> 鸟），为了避免 <em>la + a-</em> 两个 a 音连读撞音，单数定冠词改用 <strong>el</strong>（如 <strong>el aula, el agua, el ave</strong>）；但词性本身仍是阴性！因此<strong>复数必须恢复 las</strong>（<em>las aulas, las aves</em>），形容词也仍用阴性形式（<em>el agua frí<strong>a</strong></em>）。
+            </div>
+          </article>
+
+          <!-- 3.5 Graduar habilidades -->
+          <article class="grammar-card" id="gram-habilidades">
+            <div class="grammar-card-head">
+              <div>
+                <span class="badge-brass">语法模块 3.5</span>
+                <h3>语言程度与能力表达（Graduar habilidades）</h3>
+              </div>
+            </div>
+
+            <p style="margin:0; color:var(--on-surface-variant);">
+              谈论“外语掌握到什么程度”时，常用动词 <strong>hablar / entender / leer / escribir + 语言名称 + 程度副词</strong>。点击下方程度标签，感受不同水平的完整西语表达：
+            </p>
+
+            <div class="scale-pills" id="skill-scale-pills"></div>
+
+            <div class="lab-output">
+              <div>
+                <div id="skill-sentence-es" class="lab-sentence-es">Hablo inglés bastante bien, pero hablo español un poco mal.</div>
+                <div id="skill-sentence-zh" class="lab-sentence-zh">我英语说得相当不错，但西班牙语说得有点差。</div>
+              </div>
+              <button type="button" class="btn btn-primary" onclick="speakSkillSentence()">
+                <i data-lucide="volume-2" width="16" height="16" aria-hidden="true"></i>
+                <span>朗读该程度例句</span>
+              </button>
+            </div>
+          </article>
+        </section>
+
+        <!-- SECTION 4: TEXTOS Y DIÁLOGOS -->
+        <section id="sec-dialogos" class="lesson-section">
+          <div class="section-header">
+            <span class="section-kicker">04 · Textos y Diálogos</span>
+            <h2 class="section-title">实用对话与课文：在<em>真实交流</em>中运用语法</h2>
+            <p class="section-desc">
+              以下两篇对话紧扣本单元语料场景：语言交换搭档线上聊天，以及课堂小组成员分享各自学习西语的动机与周末打算。可随时隐藏中文译文进行盲听或跟读训练。
+            </p>
+          </div>
+
+          <!-- Dialogue 1 -->
+          <article class="dialogue-card" id="dialogue-1">
+            <div class="dialogue-header">
+              <div>
+                <span class="badge-emerald">课文对话 1 · Intercambio de idiomas</span>
+                <h3 style="font-family:var(--font-headline); font-size:1.45rem; margin:var(--space-xs) 0 0;">Laura 与 Mark 的语言交换 Chat 交流</h3>
+              </div>
+              <div class="dialogue-actions">
+                <button type="button" class="btn btn-secondary" onclick="toggleDialogueTranslation('d1', this)">
+                  <i data-lucide="languages" width="15" height="15" aria-hidden="true"></i>
+                  <span>隐藏中文译文</span>
+                </button>
+                <button type="button" class="btn btn-primary" id="btn-play-d1" onclick="playDialogueSequence('d1')">
+                  <i data-lucide="play" width="15" height="15" aria-hidden="true"></i>
+                  <span>连续朗读对话 1</span>
+                </button>
+              </div>
+            </div>
+            <div class="dialogue-lines" id="dialogue-lines-d1"></div>
+          </article>
+
+          <!-- Dialogue 2 -->
+          <article class="dialogue-card" id="dialogue-2">
+            <div class="dialogue-header">
+              <div>
+                <span class="badge-brass">课文对话 2 · En clase de español</span>
+                <h3 style="font-family:var(--font-headline); font-size:1.45rem; margin:var(--space-xs) 0 0;">课堂讨论：你为什么学西班牙语？近期计划是什么？</h3>
+              </div>
+              <div class="dialogue-actions">
+                <button type="button" class="btn btn-secondary" onclick="toggleDialogueTranslation('d2', this)">
+                  <i data-lucide="languages" width="15" height="15" aria-hidden="true"></i>
+                  <span>隐藏中文译文</span>
+                </button>
+                <button type="button" class="btn btn-primary" id="btn-play-d2" onclick="playDialogueSequence('d2')">
+                  <i data-lucide="play" width="15" height="15" aria-hidden="true"></i>
+                  <span>连续朗读对话 2</span>
+                </button>
+              </div>
+            </div>
+            <div class="dialogue-lines" id="dialogue-lines-d2"></div>
+          </article>
+        </section>
+
+        <!-- SECTION 5: EJERCICIOS Y SOLUCIONES -->
+        <section id="sec-ejercicios" class="lesson-section">
+          <div class="section-header">
+            <span class="section-kicker">05 · Ejercicios y Soluciones</span>
+            <h2 class="section-title">单元巩固练习与详细参考答案</h2>
+            <p class="section-desc">
+              完成下列四大题型共 29 道精选巩固题，系统检验动词变位、por/para/porque 辨析、意图改写与课文理解。作答进度会自动保存。
+            </p>
+          </div>
+
+          <div class="exercise-toolbar">
+            <div>
+              <div class="field-label">当前自测得分</div>
+              <div class="exercise-score" id="quiz-score-display">尚未批改（共 29 题）</div>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:var(--space-sm);">
+              <button type="button" class="btn btn-primary" onclick="gradeAllExercises()">
+                <i data-lucide="check-circle" width="16" height="16" aria-hidden="true"></i>
+                <span>一键批改全部练习</span>
+              </button>
+              <button type="button" class="btn btn-secondary" id="btn-reset-quiz" onclick="handleResetQuiz(this)">
+                <i data-lucide="rotate-ccw" width="16" height="16" aria-hidden="true"></i>
+                <span>重置作答</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Exercise 1 -->
+          <article class="exercise-block">
+            <div class="grammar-card-head">
+              <h3>练习 1：直陈式现在时规则动词变位填空（10 题）</h3>
+              <span class="badge-emerald">Verbos en presente (-ar / -er / -ir)</span>
+            </div>
+            <p style="margin:0; color:var(--on-surface-variant); font-size:0.9375rem;">
+              根据括号中的动词原形和主语，填写正确的现在时变位形式（注意西班牙语重音符号，如 <em>habláis</em>）。
+            </p>
+            <div class="exercise-list" id="ex1-container"></div>
+          </article>
+
+          <!-- Exercise 2 -->
+          <article class="exercise-block">
+            <div class="grammar-card-head">
+              <h3>练习 2：Por / Para / Porque / ¿Por qué? 选词填空（10 题）</h3>
+              <span class="badge-brass">Motivos y finalidad</span>
+            </div>
+            <p style="margin:0; color:var(--on-surface-variant); font-size:0.9375rem;">
+              分析空格后的词性结构（名词 / 动词原形 / 变位动词句 / 疑问句），从下拉框中选择唯一正确的连接词。
+            </p>
+            <div class="exercise-list" id="ex2-container"></div>
+          </article>
+
+          <!-- Exercise 3 -->
+          <article class="exercise-block">
+            <div class="grammar-card-head">
+              <h3>练习 3：Querer + Infinitivo 意图表达改写（5 题）</h3>
+              <span class="badge-emerald">Expresar intenciones</span>
+            </div>
+            <p style="margin:0; color:var(--on-surface-variant); font-size:0.9375rem;">
+              根据给出的主语与动词原形提示，写出完整的西语意图表达句（例如：<em>Yo / viajar a Madrid → Yo quiero viajar a Madrid.</em>，可省略主语代词，大小写均可）。
+            </p>
+            <div class="exercise-list" id="ex3-container"></div>
+          </article>
+
+          <!-- Exercise 4 -->
+          <article class="exercise-block">
+            <div class="grammar-card-head">
+              <h3>练习 4：课文对话阅读理解与问答（4 题）</h3>
+              <span class="badge-brass">Comprensión lectora</span>
+            </div>
+            <p style="margin:0; color:var(--on-surface-variant); font-size:0.9375rem;">
+              结合第四部分的两篇对话内容，选择最符合原文信息的答案。
+            </p>
+            <div class="exercise-list" id="ex4-container"></div>
+          </article>
+
+          <!-- Solutions Panel -->
+          <article class="solutions-panel" id="solutions-panel">
+            <div class="grammar-card-head">
+              <div>
+                <span class="badge-brass">Soluciones Explícitas</span>
+                <h3 style="font-family:var(--font-headline); font-size:1.5rem; margin:var(--space-xs) 0 0;">全部练习参考答案与逐题语法解析</h3>
+              </div>
+              <button type="button" class="btn btn-emerald" id="btn-toggle-solutions" onclick="toggleSolutionsPanel()">
+                <i data-lucide="chevron-down" width="16" height="16" aria-hidden="true"></i>
+                <span>展开查看详细参考答案</span>
+              </button>
+            </div>
+            <div id="solutions-body" class="solutions-body is-collapsed"></div>
+          </article>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p style="margin:0;">
+      <strong>参考资料来源说明：</strong>本互动学习讲义内容依据《Aula Internacional 1 Nueva Edición》（Editorial Difusión，Unidad 2: Quiero aprender español）教材及教师用书（Libro del profesor）、《Aula Internacional 1 Glosario Español–Eslovaco》（Peter Gschweng）以及 A1 级教学大纲与课程语料整理编写。
+    </p>
+  </footer>
+
+  <!-- Mobile floating navigation dock -->
+  <nav class="floating-nav" aria-label="移动端快速跳转">
+    <button type="button" class="floating-nav-btn is-active" onclick="scrollToSection('sec-objetivos')">目标</button>
+    <button type="button" class="floating-nav-btn" onclick="scrollToSection('sec-lexico')">词汇</button>
+    <button type="button" class="floating-nav-btn" onclick="scrollToSection('sec-gramatica')">语法</button>
+    <button type="button" class="floating-nav-btn" onclick="scrollToSection('sec-dialogos')">对话</button>
+    <button type="button" class="floating-nav-btn" onclick="scrollToSection('sec-ejercicios')">练习</button>
+    <button type="button" class="floating-nav-btn" onclick="stopAllSpeech()" aria-label="停止朗读">停读</button>
+  </nav>
+
+  <api-shim></api-shim>
+
+  <script>
+    // =========================================================================
+    // DATA DEFINITIONS (All strings use backtick template literals)
+    // =========================================================================
+    const VOCAB_GROUPS = [
+      {
+        id: `idiomas`,
+        title: `第一组：语言与学习（Idiomas y aprendizaje）`,
+        subtitle: `共 11 个核心词条：掌握常见语言名称与语言学习高频表达`,
+        items: [
+          {
+            id: `v1`, word: `aprender`, pos: `v. 动词`, zh: `学习，学会`,
+            chunk: `aprender español`, chunkZh: `学西班牙语`,
+            sentence: `Quiero aprender español para viajar por Sudamérica.`,
+            sentenceZh: `我想学西班牙语，以便去南美洲旅行。`
+          },
+          {
+            id: `v2`, word: `el idioma`, pos: `m. 阳性名词`, zh: `语言`,
+            chunk: `hablar varios idiomas`, chunkZh: `会说多种语言`,
+            sentence: `Mark habla tres idiomas: inglés, francés y un poco de español.`,
+            sentenceZh: `马克会说三种语言：英语、法语和一点点西班牙语。`
+          },
+          {
+            id: `v3`, word: `la lengua materna`, pos: `f. 阴性名词短语`, zh: `母语`,
+            chunk: `mi lengua materna`, chunkZh: `我的母语`,
+            sentence: `El chino es mi lengua materna, pero estudio español en clase.`,
+            sentenceZh: `中文是我的母语，但我在课堂上学习西班牙语。`
+          },
+          {
+            id: `v4`, word: `el español`, pos: `m. 阳性名词`, zh: `西班牙语`,
+            chunk: `estudiar español`, chunkZh: `学习西班牙语`,
+            sentence: `Estudio español porque me interesa mucho la cultura hispana.`,
+            sentenceZh: `我学习西班牙语是因为我对西语文化很感兴趣。`
+          },
+          {
+            id: `v5`, word: `el inglés`, pos: `m. 阳性名词`, zh: `英语`,
+            chunk: `practicar inglés`, chunkZh: `练习英语`,
+            sentence: `Laura quiere practicar inglés por su trabajo en una empresa internacional.`,
+            sentenceZh: `劳拉因为她在一家跨国公司的工作而想练习英语。`
+          },
+          {
+            id: `v6`, word: `el francés`, pos: `m. 阳性名词`, zh: `法语`,
+            chunk: `entender francés`, chunkZh: `听懂法语`,
+            sentence: `¿Entiendes francés o prefieres hablar en español?`,
+            sentenceZh: `你懂法语还是更喜欢用西班牙语交谈？`
+          },
+          {
+            id: `v7`, word: `el alemán`, pos: `m. 阳性名词`, zh: `德语`,
+            chunk: `aprender alemán`, chunkZh: `学习德语`,
+            sentence: `Mi hermano quiere aprender alemán para estudiar en Berlín.`,
+            sentenceZh: `我哥哥想学德语，以便去柏林读书。`
+          },
+          {
+            id: `v8`, word: `el italiano`, pos: `m. 阳性名词`, zh: `意大利语`,
+            chunk: `hablar italiano`, chunkZh: `说意大利语`,
+            sentence: `Hablo italiano un poco porque tengo buenos amigos en Roma.`,
+            sentenceZh: `我会说一点意大利语，因为我在罗马有好朋友。`
+          },
+          {
+            id: `v9`, word: `el ruso`, pos: `m. 阳性名词`, zh: `俄语`,
+            chunk: `leer en ruso`, chunkZh: `用俄语阅读`,
+            sentence: `Anastasia habla ruso muy bien y ahora aprende español.`,
+            sentenceZh: `阿纳斯塔西娅俄语说得非常好，现在正在学西班牙语。`
+          },
+          {
+            id: `v10`, word: `el chino`, pos: `m. 阳性名词`, zh: `中文，汉语`,
+            chunk: `escribir en chino`, chunkZh: `用中文书写`,
+            sentence: `El chino es un idioma muy interesante y muy útil hoy en día.`,
+            sentenceZh: `中文是一门非常有趣且如今非常实用的语言。`
+          },
+          {
+            id: `v11`, word: `el portugués`, pos: `m. 阳性名词`, zh: `葡萄牙语`,
+            chunk: `comprender portugués`, chunkZh: `理解葡萄牙语`,
+            sentence: `Comprendo portugués bastante bien porque se parece mucho al español.`,
+            sentenceZh: `我能相当好地听懂葡萄牙语，因为它和西班牙语很相似。`
+          }
+        ]
+      },
+      {
+        id: `clase`,
+        title: `第二组：语言课堂活动（Actividades en la clase de lengua）`,
+        subtitle: `共 9 个核心词块：描述在西语课堂中想做与常做的学习任务`,
+        items: [
+          {
+            id: `v12`, word: `estudiar gramática`, pos: `v. + n. 词块`, zh: `学习语法`,
+            chunk: `estudiar la gramática española`, chunkZh: `学习西班牙语语法`,
+            sentence: `En la clase de hoy queremos estudiar gramática y verbos regulares.`,
+            sentenceZh: `在今天的课上，我们想学习语法和规则动词。`
+          },
+          {
+            id: `v13`, word: `leer en español`, pos: `v. + prep. 词块`, zh: `用西语阅读`,
+            chunk: `leer novelas y periódicos`, chunkZh: `阅读小说和报纸`,
+            sentence: `Leo artículos en español todos los días para mejorar mi vocabulario.`,
+            sentenceZh: `我每天用西班牙语读文章，以提高我的词汇量。`
+          },
+          {
+            id: `v14`, word: `hablar con nativos`, pos: `v. + prep. 词块`, zh: `和母语者交流`,
+            chunk: `hablar con nativos en clase`, chunkZh: `在课堂上和母语者交谈`,
+            sentence: `Quiero hablar con nativos para practicar conversaciones reales.`,
+            sentenceZh: `我想和母语者交流，来练习真实的日常对话。`
+          },
+          {
+            id: `v15`, word: `ver películas españolas`, pos: `v. + n. 词块`, zh: `看西班牙电影`,
+            chunk: `ver películas en versión original`, chunkZh: `看原声电影`,
+            sentence: `Voy al cine los viernes para ver películas españolas sin doblaje.`,
+            sentenceZh: `我每周五去电影院看原声未配音的西班牙电影。`
+          },
+          {
+            id: `v16`, word: `escuchar canciones`, pos: `v. + n. 词块`, zh: `听歌曲`,
+            chunk: `escuchar canciones en español`, chunkZh: `听西班牙语歌曲`,
+            sentence: `Escuchamos canciones en clase para aprender nuevas expresiones.`,
+            sentenceZh: `我们在课堂上听歌，以便学习新的地道表达。`
+          },
+          {
+            id: `v17`, word: `buscar palabras en el diccionario`, pos: `v. 词块`, zh: `查字典`,
+            chunk: `buscar palabras nuevas`, chunkZh: `查阅生词`,
+            sentence: `Cuando leo un texto y no entiendo una palabra, la busco en el diccionario.`,
+            sentenceZh: `当我读课文遇到不懂的单词时，就会去查字典。`
+          },
+          {
+            id: `v18`, word: `hacer ejercicios`, pos: `v. + n. 词块`, zh: `做练习`,
+            chunk: `hacer ejercicios de gramática`, chunkZh: `做语法练习题`,
+            sentence: `Hacemos muchos ejercicios para recordar los verbos en presente.`,
+            sentenceZh: `我们做很多练习来巩固现在时的动词变位。`
+          },
+          {
+            id: `v19`, word: `escribir e-mails`, pos: `v. + n. 词块`, zh: `写电子邮件`,
+            chunk: `escribir correos electrónicos`, chunkZh: `撰写电子邮件`,
+            sentence: `Necesito aprender a escribir e-mails formales por mi trabajo.`,
+            sentenceZh: `因为工作的关系，我需要学会写正式的西语邮件。`
+          },
+          {
+            id: `v20`, word: `practicar la pronunciación`, pos: `v. + n. 词块`, zh: `练习发音`,
+            chunk: `practicar la pronunciación en voz alta`, chunkZh: `大声练习发音`,
+            sentence: `Queremos practicar la pronunciación con el profesor todos los días.`,
+            sentenceZh: `我们想每天都和老师一起练习发音。`
+          }
+        ]
+      },
+      {
+        id: `ocio`,
+        title: `第三组：休闲与意图活动（Actividades de ocio e intenciones）`,
+        subtitle: `共 10 个核心词块：与 querer 搭配谈论周末安排、兴趣与人生计划`,
+        items: [
+          {
+            id: `v21`, word: `viajar`, pos: `v. 动词`, zh: `旅行`,
+            chunk: `viajar por Latinoamérica`, chunkZh: `环游拉丁美洲`,
+            sentence: `Este verano queremos viajar por México, Colombia y Perú.`,
+            sentenceZh: `今年夏天我们想去墨西哥、哥伦比亚和秘鲁旅行。`
+          },
+          {
+            id: `v22`, word: `ir de excursión`, pos: `v. 词块`, zh: `去远足 / 郊游`,
+            chunk: `ir de excursión a la montaña`, chunkZh: `去山里郊游`,
+            sentence: `El domingo quiero ir de excursión con mis compañeros de clase.`,
+            sentenceZh: `周日我想和班里的同学们一起去郊游。`
+          },
+          {
+            id: `v23`, word: `salir de noche`, pos: `v. 词块`, zh: `晚上出去玩`,
+            chunk: `salir de noche por Madrid`, chunkZh: `晚上在马德里逛逛玩玩`,
+            sentence: `La vida nocturna en España es muy animada y me gusta salir de noche.`,
+            sentenceZh: `西班牙的夜生活非常热闹，我喜欢晚上出去玩。`
+          },
+          {
+            id: `v24`, word: `ir al cine`, pos: `v. 词块`, zh: `去看电影`,
+            chunk: `ir al cine el fin de semana`, chunkZh: `周末去看电影`,
+            sentence: `¿Qué quieres hacer este sábado? — Yo quiero ir al cine.`,
+            sentenceZh: `这周六你想做什么？——我想去看电影。`
+          },
+          {
+            id: `v25`, word: `hacer deporte`, pos: `v. + n. 词块`, zh: `做运动`,
+            chunk: `hacer deporte en el gimnasio`, chunkZh: `在健身房做运动`,
+            sentence: `Los martes hago deporte porque quiero tener una vida activa.`,
+            sentenceZh: `我每周二做运动，因为我想保持充满活力的生活。`
+          },
+          {
+            id: `v26`, word: `salir a cenar`, pos: `v. 词块`, zh: `出去吃晚饭`,
+            chunk: `salir a cenar tapas`, chunkZh: `出去吃塔帕斯晚餐`,
+            sentence: `Después de la clase, queremos salir a cenar en un restaurante típico.`,
+            sentenceZh: `下课后，我们想去一家特色餐厅吃晚饭。`
+          },
+          {
+            id: `v27`, word: `cocinar platos típicos`, pos: `v. + n. 词块`, zh: `做特色菜`,
+            chunk: `cocinar platos típicos españoles`, chunkZh: `烹饪西班牙特色菜`,
+            sentence: `Quiero aprender a cocinar platos típicos como la paella y el gazpacho.`,
+            sentenceZh: `我想学做像海鲜饭和冷汤这样的西班牙特色菜。`
+          },
+          {
+            id: `v28`, word: `ir de compras`, pos: `v. 词块`, zh: `去购物 / 逛街`,
+            chunk: `ir de compras por el centro`, chunkZh: `去市中心逛街购物`,
+            sentence: `Ana y Rocío quieren ir de compras este fin de semana.`,
+            sentenceZh: `安娜和罗西奥这个周末想去购物。`
+          },
+          {
+            id: `v29`, word: `conocer a gente nueva`, pos: `v. 词块`, zh: `结识新朋友`,
+            chunk: `conocer a gente de otros países`, chunkZh: `结识来自其他国家的人`,
+            sentence: `Voy a un intercambio de idiomas para conocer a gente nueva.`,
+            sentenceZh: `我去参加语言交换活动是为了结识新朋友。`
+          },
+          {
+            id: `v30`, word: `vivir en el extranjero`, pos: `v. 词块`, zh: `在国外生活`,
+            chunk: `vivir en el extranjero un año`, chunkZh: `在国外生活一年`,
+            sentence: `Mi objetivo es vivir en el extranjero y hablar español todos los días.`,
+            sentenceZh: `我的目标是在国外生活，并且每天都说西班牙语。`
+          }
+        ]
+      }
+    ];
+
+    const LAB_SUBJECTS = [
+      { label: `Yo`, zh: `我`, verb: `quiero` },
+      { label: `Tú`, zh: `你`, verb: `quieres` },
+      { label: `Virginia`, zh: `弗吉尼亚`, verb: `quiere` },
+      { label: `Nosotros`, zh: `我们`, verb: `queremos` },
+      { label: `Vosotros`, zh: `你们`, verb: `queréis` },
+      { label: `Ana y Rocío`, zh: `安娜和罗西奥`, verb: `quieren` }
+    ];
+
+    const LAB_ACTIVITIES = [
+      { es: `aprender español`, zh: `学西班牙语` },
+      { es: `hacer deporte`, zh: `做运动` },
+      { es: `ir de excursión`, zh: `去郊游` },
+      { es: `visitar el Museo del Prado`, zh: `参观普拉多博物馆` },
+      { es: `salir a cenar con amigos`, zh: `和朋友出去吃晚饭` },
+      { es: `vivir en España`, zh: `在西班牙生活` }
+    ];
+
+    const LAB_TIMES = [
+      { es: `este fin de semana`, zh: `这个周末` },
+      { es: `este año`, zh: `今年` },
+      { es: `en este curso`, zh: `在这个课程里` },
+      { es: `mañana por la tarde`, zh: `明天下午` }
+    ];
+
+    const REGULAR_VERBS = [
+      { inf: `hablar`, type: `-ar`, stem: `habl`, zh: `说，交谈`, forms: [`hablo`, `hablas`, `habla`, `hablamos`, `habláis`, `hablan`] },
+      { inf: `estudiar`, type: `-ar`, stem: `estudi`, zh: `学习，攻读`, forms: [`estudio`, `estudias`, `estudia`, `estudiamos`, `estudiáis`, `estudian`] },
+      { inf: `trabajar`, type: `-ar`, stem: `trabaj`, zh: `工作`, forms: [`trabajo`, `trabajas`, `trabaja`, `trabajamos`, `trabajáis`, `trabajan`] },
+      { inf: `comprar`, type: `-ar`, stem: `compr`, zh: `购买`, forms: [`compro`, `compras`, `compra`, `compramos`, `compráis`, `compran`] },
+      { inf: `comprender`, type: `-er`, stem: `comprend`, zh: `理解，明白`, forms: [`comprendo`, `comprendes`, `comprende`, `comprendemos`, `comprendéis`, `comprenden`] },
+      { inf: `leer`, type: `-er`, stem: `le`, zh: `阅读`, forms: [`leo`, `lees`, `lee`, `leemos`, `leéis`, `leen`] },
+      { inf: `aprender`, type: `-er`, stem: `aprend`, zh: `学习，学会`, forms: [`aprendo`, `aprendes`, `aprende`, `aprendemos`, `aprendéis`, `aprenden`] },
+      { inf: `comer`, type: `-er`, stem: `com`, zh: `吃`, forms: [`como`, `comes`, `come`, `comemos`, `coméis`, `comen`] },
+      { inf: `vivir`, type: `-ir`, stem: `viv`, zh: `居住，生活`, forms: [`vivo`, `vives`, `vive`, `vivimos`, `vivís`, `viven`] },
+      { inf: `escribir`, type: `-ir`, stem: `escrib`, zh: `写，书写`, forms: [`escribo`, `escribes`, `escribe`, `escribimos`, `escribís`, `escriben`] }
+    ];
+
+    const SKILL_LEVELS = [
+      {
+        label: `muy bien`, zhTag: `非常好`,
+        es: `Hablo inglés muy bien y entiendo casi todo en las películas.`,
+        zh: `我英语说得非常好，几乎能听懂电影里的所有内容。`
+      },
+      {
+        label: `bastante bien`, zhTag: `相当好`,
+        es: `Hablo inglés bastante bien, pero hablo español un poco mal.`,
+        zh: `我英语说得相当不错，但西班牙语说得有点差。`
+      },
+      {
+        label: `regular`, zhTag: `一般般`,
+        es: `Leo en francés regular; entiendo el texto pero necesito el diccionario.`,
+        zh: `我法语阅读水平一般，能看懂文章但需要查字典。`
+      },
+      {
+        label: `un poco`, zhTag: `一点点`,
+        es: `Hablo un poco de español porque estudio desde hace dos semanas.`,
+        zh: `我会说一点点西班牙语，因为我才学了两周。`
+      },
+      {
+        label: `mal / muy mal`, zhTag: `差 / 很差`,
+        es: `Escribo en alemán muy mal, por eso quiero hacer más ejercicios.`,
+        zh: `我德语写得很差，因此我想多做些练习。`
+      },
+      {
+        label: `nada de`, zhTag: `完全不会`,
+        es: `No hablo nada de ruso, pero quiero aprender el abecedario.`,
+        zh: `我一点俄语也不会说，但我想学一下字母表。`
+      }
+    ];
+
+    const DIALOGUES = {
+      d1: [
+        {
+          speaker: `Laura`,
+          es: `¡Hola, Mark! ¿Qué tal? ¿Estudias español en Madrid?`,
+          zh: `你好，马克！最近怎么样？你在马德里学西班牙语吗？`
+        },
+        {
+          speaker: `Mark`,
+          es: `¡Hola, Laura! Sí, vivo en Madrid ahora y estudio español en la universidad.`,
+          zh: `你好，劳拉！是的，我现在住在马德里，在大学里学西班牙语。`
+        },
+        {
+          speaker: `Laura`,
+          es: `¡Qué bien! ¿Por qué estudias español?`,
+          zh: `太棒了！你为什么学西班牙语呢？`
+        },
+        {
+          speaker: `Mark`,
+          es: `Estudio español por la universidad, porque vivo aquí y también para hablar con mis amigos españoles. ¿Y tú? ¿Qué idiomas hablas?`,
+          zh: `我学西语是因为大学课程、因为我住在这里，也为了和我的西班牙朋友们聊天。你呢？你会说哪些语言？`
+        },
+        {
+          speaker: `Laura`,
+          es: `El español es mi lengua materna. Hablo inglés bastante bien, pero quiero practicar inglés por mi trabajo en una empresa internacional.`,
+          zh: `西班牙语是我的母语。我英语说得还算不错，但因为我在一家跨国公司的工作，我想多练习英语。`
+        },
+        {
+          speaker: `Mark`,
+          es: `Perfecto, yo hablo inglés muy bien, francés un poco y español regular. ¿Quieres quedar este viernes para hacer un intercambio de idiomas?`,
+          zh: `太好了！我英语说得很好，法语会一点，西语水平一般。这周五你想见个面做一次语言交换吗？`
+        },
+        {
+          speaker: `Laura`,
+          es: `¡Claro que sí! Podemos tomar un café y hablar mitad en español y mitad en inglés.`,
+          zh: `当然可以！我们可以喝杯咖啡，一半时间说西语，一半时间说英语。`
+        }
+      ],
+      d2: [
+        {
+          speaker: `Profesora (Virginia)`,
+          es: `¡Buenos días a todos! Hoy hablamos de vuestros motivos. ¿Por qué estudiáis español y qué queréis hacer este fin de semana?`,
+          zh: `大家早上好！今天我们来聊聊你们的学习动机。你们为什么学西班牙语？这周末想做些什么呢？`
+        },
+        {
+          speaker: `Andrés`,
+          es: `Yo estudio español para viajar por Colombia y conocer a gente nueva. Este fin de semana quiero ir de excursión con unos amigos.`,
+          zh: `我学西班牙语是为了去哥伦比亚旅行并结识新朋友。这周末我想和几个朋友去郊游。`
+        },
+        {
+          speaker: `Ornela`,
+          es: `Pues yo aprendo español para leer novelas en español y ver películas de Pedro Almodóvar. El sábado quiero ir al cine.`,
+          zh: `嗯，我学西语是为了读西班牙语小说和看佩德罗·阿莫多瓦的电影。周六我想去看电影。`
+        },
+        {
+          speaker: `Anastasia`,
+          es: `Yo estudio por mi trabajo, porque necesito escribir e-mails a clientes de México. Pero el domingo quiero descansar y cocinar platos típicos en casa.`,
+          zh: `我是因为工作才学的，因为我需要给墨西哥客户写邮件。不过周日我想在家休息，做做特色菜。`
+        },
+        {
+          speaker: `Elena`,
+          es: `¡Qué planes tan buenos! Yo estudio porque mi novio es argentino y quiero vivir en Buenos Aires el próximo año.`,
+          zh: `计划都好棒！我学西语是因为我男朋友是阿根廷人，明年我想去布宜诺斯艾利斯生活。`
+        }
+      ]
+    };
+
+    const EX1_DATA = [
+      { before: `Yo `, after: ` (hablar) español en clase todos los días.`, answer: `hablo`, note: `第一人称单数 yo，-ar 词尾变 -o。` },
+      { before: `¿Tú `, after: ` (estudiar) en la biblioteca por la tarde?`, answer: `estudias`, note: `第二人称单数 tú，-ar 词尾变 -as。` },
+      { before: `Laura `, after: ` (trabajar) en una empresa internacional.`, answer: `trabaja`, note: `第三人称单数 ella，-ar 词尾变 -a。` },
+      { before: `Nosotros `, after: ` (aprender) muchas palabras nuevas hoy.`, answer: `aprendemos`, note: `第一人称复数 nosotros，-er 词尾变 -emos。` },
+      { before: `¿Vosotros `, after: ` (comprender) bien la gramática?`, answer: `comprendéis`, note: `第二人称复数 vosotros，-er 词尾变 -éis（注意 é 带重音）。` },
+      { before: `Ellos `, after: ` (leer) el periódico español los domingos.`, answer: `leen`, note: `第三人称复数 ellos，-er 词尾变 -en（lee + n = leen）。` },
+      { before: `Mi hermano y yo `, after: ` (vivir) en un piso en el centro de Madrid.`, answer: `vivimos`, note: `Mi hermano y yo = nosotros，-ir 词尾变 -imos。` },
+      { before: `Anastasia `, after: ` (escribir) mensajes de texto a sus compañeros.`, answer: `escribe`, note: `第三人称单数 ella，-ir 词尾变 -e。` },
+      { before: `¿Ustedes `, after: ` (comer) comida típica española en este restaurante?`, answer: `comen`, note: `ustedes 与 ellos 同变位，-er 词尾变 -en。` },
+      { before: `Tú y Ana `, after: ` (comprar) un diccionario español-chino en la librería.`, answer: `compráis`, note: `Tú y Ana = vosotros/as（西班牙语境），-ar 词尾变 -áis（注意 á 带重音）。` }
+    ];
+
+    const EX2_DATA = [
+      { before: `— ¿`, after: ` estudias español? — Porque quiero viajar.`, answer: `Por qué`, options: [`Por qué`, `Porque`, `Para`, `Por`], note: `疑问句提问“为什么”，必须分开写且 qué 带重音符号。` },
+      { before: `Estudio español `, after: ` mi trabajo en el hotel.`, answer: `por`, options: [`por`, `para`, `porque`, `por qué`], note: `mi trabajo 是名词短语，表示外部原因用 por。` },
+      { before: `Queremos aprender idiomas `, after: ` conocer a gente nueva.`, answer: `para`, options: [`por`, `para`, `porque`, `por qué`], note: `conocer 是动词原形（不定式），表示目的“为了……”用 para。` },
+      { before: `Mark vive en España `, after: ` estudia en Madrid.`, answer: `porque`, options: [`por`, `para`, `porque`, `por qué`], note: `estudia 是变位动词句，引导完整原因从句用 porque。` },
+      { before: `Laura escucha canciones `, after: ` practicar la pronunciación.`, answer: `para`, options: [`por`, `para`, `porque`, `por qué`], note: `practicar 为动词原形，表达目的用 para。` },
+      { before: `Elena aprende español `, after: ` su novio es argentino.`, answer: `porque`, options: [`por`, `para`, `porque`, `por qué`], note: `su novio es argentino 包含变位动词 es，用 porque。` },
+      { before: `Voy a México `, after: ` el arte y la gastronomía.`, answer: `por`, options: [`por`, `para`, `porque`, `por qué`], note: `el arte y la gastronomía 为名词短语，表缘由用 por。` },
+      { before: `Necesito un diccionario `, after: ` buscar palabras difíciles.`, answer: `para`, options: [`por`, `para`, `porque`, `por qué`], note: `buscar 为动词原形，表示工具用途或目的用 para。` },
+      { before: `— ¿`, after: ` quieres ir al cine hoy? — Porque ponen una película española.`, answer: `Por qué`, options: [`Por qué`, `Porque`, `Para`, `Por`], note: `疑问句提问“为什么”用 ¿Por qué?。` },
+      { before: `Estudio mucho `, after: ` quiero hablar español muy bien.`, answer: `porque`, options: [`por`, `para`, `porque`, `por qué`], note: `quiero hablar 为变位动词句，用 porque 连接。` }
+    ];
+
+    const EX3_DATA = [
+      { prompt: `Yo / aprender español en este curso`, answer: `Yo quiero aprender español en este curso.`, alt: `quiero aprender español en este curso`, note: `yo 对应 quiero，后接动词原形 aprender。` },
+      { prompt: `Nosotros / viajar por Sudamérica`, answer: `Nosotros queremos viajar por Sudamérica.`, alt: `queremos viajar por sudamérica`, note: `nosotros 对应 queremos（不裂变！），后接 viajar。` },
+      { prompt: `¿Tú / ir al cine este fin de semana?`, answer: `¿Tú quieres ir al cine este fin de semana?`, alt: `¿quieres ir al cine este fin de semana?`, note: `tú 对应 quieres，后接 ir。` },
+      { prompt: `Ana y Rocío / salir a cenar el sábado`, answer: `Ana y Rocío quieren salir a cenar el sábado.`, alt: `ellas quieren salir a cenar el sábado`, note: `Ana y Rocío（她们）对应 quieren，后接 salir。` },
+      { prompt: `¿Vosotros / visitar el Museo del Prado?`, answer: `¿Vosotros queréis visitar el Museo del Prado?`, alt: `¿queréis visitar el museo del prado?`, note: `vosotros 对应 queréis（不裂变，带重音 é）。` }
+    ];
+
+    const EX4_DATA = [
+      {
+        q: `根据对话 1，Mark 为什么学习西班牙语？（多项理由中哪一项符合原文？）`,
+        options: [
+          `A. 因为他有西班牙大学课程、住在马德里且想和西班牙朋友交谈`,
+          `B. 因为他想在跨国公司找一份说英语的工作`,
+          `C. 因为他的母语是法语，想去南美洲拍电影`
+        ],
+        answerIndex: 0,
+        note: `对话 1 中 Mark 明确说道："por la universidad, porque vivo aquí y también para hablar con mis amigos españoles."`
+      },
+      {
+        q: `根据对话 1，Laura 的母语和想练习的语言分别是什么？`,
+        options: [
+          `A. 母语是英语，想练习法语`,
+          `B. 母语是西班牙语，想因工作关系练习英语`,
+          `C. 母语是西班牙语，想练习意大利语`
+        ],
+        answerIndex: 1,
+        note: `Laura 说："El español es mi lengua materna... quiero practicar inglés por mi trabajo."`
+      },
+      {
+        q: `根据对话 2，Ornela 和 Andrés 这周末分别想做什么？`,
+        options: [
+          `A. Ornela 想去郊游，Andrés 想在家做特色菜`,
+          `B. Ornela 想周六去看电影，Andrés 想和朋友去郊游`,
+          `C. 两人都想周末去逛街买字典`
+        ],
+        answerIndex: 1,
+        note: `对话 2 中 Andrés 想 "ir de excursión"，Ornela 周六想 "ir al cine"。`
+      },
+      {
+        q: `根据对话 2，Anastasia 和 Elena 学习西班牙语的动机分别属于哪种语法结构？`,
+        options: [
+          `A. 两人都只用了 para + 动词原形`,
+          `B. Anastasia 用了 por mi trabajo (原因名词)，Elena 用了 porque + 变位动词句`,
+          `C. 两人都因为要去哥伦比亚旅行而学西语`
+        ],
+        answerIndex: 1,
+        note: `Anastasia 说 "por mi trabajo"，Elena 说 "porque mi novio es argentino..."。`
+      }
+    ];
+
+    // =========================================================================
+    // STATE MANAGEMENT
+    // =========================================================================
+    let appState = {
+      masteredVocab: {},
+      speechRate: 0.95,
+      seqMode: `word-chunk`,
+      vocabFilter: `all`,
+      activeVerbIndex: 0,
+      activeSkillIndex: 1,
+      ex1: Array(EX1_DATA.length).fill(``),
+      ex2: Array(EX2_DATA.length).fill(``),
+      ex3: Array(EX3_DATA.length).fill(``),
+      ex4: Array(EX4_DATA.length).fill(-1),
+      graded: false,
+      solutionsOpen: false
+    };
+
+    let speechQueueToken = 0;
+    let currentVoice = null;
+    let isSpeakingSequence = false;
+
+    async function persistState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+        try {
+          await window.notebookAppApi.setAppState(appState);
+        } catch (err) {
+          // Ignore silent persistence error in preview environments
+        }
+      }
+    }
+
+    // =========================================================================
+    // WEB SPEECH API (es-ES)
+    // =========================================================================
+    function pickSpanishVoice() {
+      if (!(`speechSynthesis` in window)) return null;
+      const voices = window.speechSynthesis.getVoices() || [];
+      return (
+        voices.find(v => v.lang && v.lang.toLowerCase() === `es-es`) ||
+        voices.find(v => v.lang && v.lang.toLowerCase().startsWith(`es`)) ||
+        null
+      );
+    }
+
+    if (`speechSynthesis` in window) {
+      currentVoice = pickSpanishVoice();
+      if (typeof window.speechSynthesis.onvoiceschanged !== `undefined`) {
+        window.speechSynthesis.onvoiceschanged = function () {
+          currentVoice = pickSpanishVoice();
+        };
+      }
+    }
+
+    function setSpeechStatus(active, text) {
+      const bar = document.getElementById(`speech-status`);
+      const label = document.getElementById(`speech-status-text`);
+      if (bar) {
+        if (active) bar.classList.add(`is-active`);
+        else bar.classList.remove(`is-active`);
+      }
+      if (label) label.textContent = text;
+    }
+
+    function clearSpeakingHighlights() {
+      document.querySelectorAll(`.is-speaking`).forEach(el => el.classList.remove(`is-speaking`));
+      document.querySelectorAll(`.is-playing`).forEach(el => el.classList.remove(`is-playing`));
+    }
+
+    function stopAllSpeech() {
+      speechQueueToken += 1;
+      isSpeakingSequence = false;
+      if (`speechSynthesis` in window) {
+        window.speechSynthesis.cancel();
+      }
+      clearSpeakingHighlights();
+      setSpeechStatus(false, `语音就绪（es-ES）`);
+      resetSequenceButtonLabels();
+    }
+
+    function resetSequenceButtonLabels() {
+      VOCAB_GROUPS.forEach(group => {
+        const btn = document.getElementById(`btn-seq-${group.id}`);
+        if (btn) {
+          btn.innerHTML = `<i data-lucide="play" width="16" height="16" aria-hidden="true"></i><span>一键连续朗读本组单词</span>`;
+        }
+      });
+      const d1Btn = document.getElementById(`btn-play-d1`);
+      if (d1Btn) d1Btn.innerHTML = `<i data-lucide="play" width="15" height="15" aria-hidden="true"></i><span>连续朗读对话 1</span>`;
+      const d2Btn = document.getElementById(`btn-play-d2`);
+      if (d2Btn) d2Btn.innerHTML = `<i data-lucide="play" width="15" height="15" aria-hidden="true"></i><span>连续朗读对话 2</span>`;
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function speakText(text, btnEl) {
+      if (!(`speechSynthesis` in window)) {
+        setSpeechStatus(false, `当前浏览器不支持 Web Speech API 语音合成`);
+        return;
+      }
+      stopAllSpeech();
+      const token = speechQueueToken;
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = `es-ES`;
+      utter.rate = Number(appState.speechRate) || 0.95;
+      if (!currentVoice) currentVoice = pickSpanishVoice();
+      if (currentVoice) utter.voice = currentVoice;
+
+      if (btnEl) btnEl.classList.add(`is-playing`);
+      setSpeechStatus(true, `正在朗读：${text.slice(0, 28)}${text.length > 28 ? `…` : ``}`);
+
+      utter.onend = function () {
+        if (token !== speechQueueToken) return;
+        clearSpeakingHighlights();
+        setSpeechStatus(false, `语音就绪（es-ES）`);
+      };
+      utter.onerror = function () {
+        if (token !== speechQueueToken) return;
+        clearSpeakingHighlights();
+        setSpeechStatus(false, `语音播放已中断`);
+      };
+      window.speechSynthesis.speak(utter);
+    }
+
+    function runUtteranceSequence(queue, onComplete) {
+      if (!(`speechSynthesis` in window)) {
+        setSpeechStatus(false, `当前浏览器不支持 Web Speech API 语音合成`);
+        return;
+      }
+      stopAllSpeech();
+      const token = speechQueueToken;
+      isSpeakingSequence = true;
+      let idx = 0;
+
+      function next() {
+        if (token !== speechQueueToken) return;
+        if (idx >= queue.length) {
+          isSpeakingSequence = false;
+          clearSpeakingHighlights();
+          setSpeechStatus(false, `本组连续朗读完成`);
+          resetSequenceButtonLabels();
+          if (typeof onComplete === `function`) onComplete();
+          return;
+        }
+        const step = queue[idx];
+        clearSpeakingHighlights();
+        if (step.highlightId) {
+          const el = document.getElementById(step.highlightId);
+          if (el) {
+            el.classList.add(`is-speaking`);
+            el.scrollIntoView({ behavior: `smooth`, block: `nearest` });
+          }
+        }
+        setSpeechStatus(true, `连读中 (${idx + 1}/${queue.length})：${step.label}`);
+
+        const utter = new SpeechSynthesisUtterance(step.text);
+        utter.lang = `es-ES`;
+        utter.rate = Number(appState.speechRate) || 0.95;
+        if (!currentVoice) currentVoice = pickSpanishVoice();
+        if (currentVoice) utter.voice = currentVoice;
+
+        utter.onend = function () {
+          if (token !== speechQueueToken) return;
+          idx += 1;
+          setTimeout(next, 260);
+        };
+        utter.onerror = function () {
+          if (token !== speechQueueToken) return;
+          idx += 1;
+          setTimeout(next, 180);
+        };
+        window.speechSynthesis.speak(utter);
+      }
+
+      next();
+    }
+
+    function playVocabGroupSequence(groupId) {
+      const btn = document.getElementById(`btn-seq-${groupId}`);
+      if (isSpeakingSequence && btn && btn.dataset.activeSeq === `true`) {
+        btn.dataset.activeSeq = `false`;
+        stopAllSpeech();
+        return;
+      }
+      const group = VOCAB_GROUPS.find(g => g.id === groupId);
+      if (!group) return;
+
+      const itemsToRead = group.items.filter(item => {
+        if (appState.vocabFilter === `unmastered`) return !appState.masteredVocab[item.id];
+        return true;
+      });
+      if (itemsToRead.length === 0) {
+        setSpeechStatus(false, `当前筛选条件下没有需要朗读的词条`);
+        return;
+      }
+
+      const queue = [];
+      itemsToRead.forEach(item => {
+        const textToSpeak = appState.seqMode === `full`
+          ? `${item.word}. ${item.chunk}. ${item.sentence}`
+          : `${item.word}. ${item.chunk}`;
+        queue.push({
+          text: textToSpeak,
+          highlightId: `card-${item.id}`,
+          label: item.word
+        });
+      });
+
+      runUtteranceSequence(queue, function () {
+        if (btn) btn.dataset.activeSeq = `false`;
+      });
+
+      if (btn) {
+        btn.dataset.activeSeq = `true`;
+        btn.innerHTML = `<i data-lucide="square" width="16" height="16" aria-hidden="true"></i><span>停止连续朗读</span>`;
+        if (window.lucide) window.lucide.createIcons();
+      }
+    }
+
+    function playDialogueSequence(dialogueId) {
+      const btn = document.getElementById(`btn-play-${dialogueId}`);
+      if (isSpeakingSequence && btn && btn.dataset.activeSeq === `true`) {
+        btn.dataset.activeSeq = `false`;
+        stopAllSpeech();
+        return;
+      }
+      const lines = DIALOGUES[dialogueId] || [];
+      const queue = lines.map((line, i) => ({
+        text: line.es,
+        highlightId: `line-${dialogueId}-${i}`,
+        label: `${line.speaker}`
+      }));
+
+      runUtteranceSequence(queue, function () {
+        if (btn) btn.dataset.activeSeq = `false`;
+      });
+
+      if (btn) {
+        btn.dataset.activeSeq = `true`;
+        btn.innerHTML = `<i data-lucide="square" width="15" height="15" aria-hidden="true"></i><span>停止朗读对话</span>`;
+        if (window.lucide) window.lucide.createIcons();
+      }
+    }
+
+    function updateSpeechRate(val) {
+      appState.speechRate = Number(val) || 0.95;
+      persistState();
+    }
+
+    function updateSeqMode(val) {
+      appState.seqMode = val;
+      persistState();
+    }
+
+    // =========================================================================
+    // VOCABULARY RENDERING & PROGRESS
+    // =========================================================================
+    function renderVocabGroups() {
+      const container = document.getElementById(`vocab-groups-container`);
+      if (!container) return;
+
+      let html = ``;
+      VOCAB_GROUPS.forEach(group => {
+        const visibleItems = group.items.filter(item => {
+          if (appState.vocabFilter === `unmastered`) return !appState.masteredVocab[item.id];
+          return true;
+        });
+
+        let cardsHtml = ``;
+        if (visibleItems.length === 0) {
+          cardsHtml = `<p style="color:var(--on-surface-variant); margin:0;">本组词条已全部标记为掌握！如需复习，请将上方“词汇筛选”切换为显示全部。</p>`;
+        } else {
+          visibleItems.forEach(item => {
+            const mastered = Boolean(appState.masteredVocab[item.id]);
+            cardsHtml += `
+              <article class="vocab-card ${mastered ? `is-mastered` : ``}" id="card-${item.id}">
+                <div class="vocab-card-top">
+                  <div class="vocab-word-block">
+                    <div class="vocab-word-line">
+                      <span class="vocab-es">${item.word}</span>
+                      <span class="vocab-pos">${item.pos}</span>
+                    </div>
+                    <span class="vocab-zh">${item.zh}</span>
+                  </div>
+                  <div class="vocab-actions">
+                    <button type="button" class="btn-icon" aria-label="朗读单词 ${item.word}" onclick="speakText('${escapeAttr(item.word)}', this)">
+                      <i data-lucide="volume-2" width="16" height="16" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="master-toggle ${mastered ? `is-checked` : ``}" onclick="toggleMastered('${item.id}')" aria-pressed="${mastered}">
+                      <i data-lucide="check" width="14" height="14" aria-hidden="true"></i>
+                      <span>${mastered ? `已掌握` : `掌握`}</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="chunk-box">
+                  <div>
+                    <span class="chunk-label">高频词块 · Lexical Chunk</span>
+                    <span class="chunk-es">${item.chunk}</span>
+                    <span class="chunk-zh">（${item.chunkZh}）</span>
+                  </div>
+                  <button type="button" class="btn-icon" aria-label="朗读词块 ${item.chunk}" onclick="speakText('${escapeAttr(item.chunk)}', this)">
+                    <i data-lucide="volume-2" width="15" height="15" aria-hidden="true"></i>
+                  </button>
+                </div>
+
+                <div class="sentence-box">
+                  <div>
+                    <p class="sentence-es">${item.sentence}</p>
+                    <p class="sentence-zh">${item.sentenceZh}</p>
+                  </div>
+                  <button type="button" class="btn-icon" aria-label="朗读例句" onclick="speakText('${escapeAttr(item.sentence)}', this)">
+                    <i data-lucide="volume-2" width="15" height="15" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </article>
+            `;
+          });
+        }
+
+        html += `
+          <div class="vocab-group">
+            <div class="vocab-group-header">
+              <div class="vocab-group-title-wrap">
+                <h3>${group.title}</h3>
+                <p>${group.subtitle}</p>
+              </div>
+              <button type="button" class="btn btn-primary" id="btn-seq-${group.id}" onclick="playVocabGroupSequence('${group.id}')">
+                <i data-lucide="play" width="16" height="16" aria-hidden="true"></i>
+                <span>一键连续朗读本组单词</span>
+              </button>
+            </div>
+            <div class="vocab-grid">${cardsHtml}</div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+      updateProgressCounters();
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function escapeAttr(str) {
+      return String(str).replace(/\\/g, `\\\\`).replace(/'/g, `\\'`);
+    }
+
+    function toggleMastered(id) {
+      appState.masteredVocab[id] = !appState.masteredVocab[id];
+      renderVocabGroups();
+      persistState();
+    }
+
+    function filterVocabCards(val) {
+      appState.vocabFilter = val;
+      renderVocabGroups();
+      persistState();
+    }
+
+    function updateProgressCounters() {
+      const totalVocab = VOCAB_GROUPS.reduce((acc, g) => acc + g.items.length, 0);
+      const masteredCount = Object.values(appState.masteredVocab).filter(Boolean).length;
+      const vocabText = document.getElementById(`sidebar-vocab-count`);
+      const vocabBar = document.getElementById(`sidebar-vocab-bar`);
+      if (vocabText) vocabText.textContent = `${masteredCount} / ${totalVocab}`;
+      if (vocabBar) vocabBar.style.width = `${Math.round((masteredCount / totalVocab) * 100)}%`;
+    }
+
+    // =========================================================================
+    // GRAMMAR INTERACTIVE LABS
+    // =========================================================================
+    function updateQuererLab() {
+      const sSel = document.getElementById(`lab-subject`);
+      const aSel = document.getElementById(`lab-activity`);
+      const tSel = document.getElementById(`lab-time`);
+      const esEl = document.getElementById(`lab-result-es`);
+      const zhEl = document.getElementById(`lab-result-zh`);
+      if (!sSel || !aSel || !tSel || !esEl || !zhEl) return;
+
+      const s = LAB_SUBJECTS[Number(sSel.value)] || LAB_SUBJECTS[0];
+      const a = LAB_ACTIVITIES[Number(aSel.value)] || LAB_ACTIVITIES[0];
+      const t = LAB_TIMES[Number(tSel.value)] || LAB_TIMES[0];
+
+      esEl.textContent = `${s.label} ${s.verb} ${a.es} ${t.es}.`;
+      zhEl.textContent = `${t.zh}，${s.zh}想${a.zh}。`;
+    }
+
+    function speakLabSentence() {
+      const esEl = document.getElementById(`lab-result-es`);
+      if (esEl) speakText(esEl.textContent);
+    }
+
+    function renderVerbSwitcher() {
+      const row = document.getElementById(`verb-switcher-row`);
+      if (!row) return;
+      row.innerHTML = REGULAR_VERBS.map((v, idx) => `
+        <button type="button" class="verb-pill ${idx === appState.activeVerbIndex ? `is-active` : ``}" onclick="selectRegularVerb(${idx})">
+          ${v.inf} (${v.zh})
+        </button>
+      `).join(``);
+      renderRegularVerbTable();
+    }
+
+    function selectRegularVerb(idx) {
+      appState.activeVerbIndex = idx;
+      renderVerbSwitcher();
+      persistState();
+    }
+
+    function renderRegularVerbTable() {
+      const tbody = document.getElementById(`regular-verb-tbody`);
+      if (!tbody) return;
+      const persons = [`yo`, `tú`, `él / ella / usted`, `nosotros / as`, `vosotros / as`, `ellos / ellas / ustedes`];
+      const arEnd = [`-o`, `-as`, `-a`, `-amos`, `-áis`, `-an`];
+      const erEnd = [`-o`, `-es`, `-e`, `-emos`, `-éis`, `-en`];
+      const irEnd = [`-o`, `-es`, `-e`, `-imos`, `-ís`, `-en`];
+
+      const v = REGULAR_VERBS[appState.activeVerbIndex] || REGULAR_VERBS[0];
+      tbody.innerHTML = persons.map((p, i) => {
+        const form = v.forms[i];
+        const endingPart = form.slice(v.stem.length);
+        return `
+          <tr>
+            <td><strong>${p}</strong></td>
+            <td><span class="ending-text">${arEnd[i]}</span></td>
+            <td><span class="ending-text">${erEnd[i]}</span></td>
+            <td><span class="ending-text">${irEnd[i]}</span></td>
+            <td>
+              <button type="button" class="inline-play-chip" onclick="speakText('${escapeAttr(form)}')">
+                <i data-lucide="volume-2" width="14" height="14" aria-hidden="true"></i>
+                <span><span class="stem-text">${v.stem}</span><span class="ending-text">${endingPart}</span></span>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join(``);
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function speakActiveVerbSet() {
+      const v = REGULAR_VERBS[appState.activeVerbIndex] || REGULAR_VERBS[0];
+      speakText(v.forms.join(`, `));
+    }
+
+    function renderSkillScale() {
+      const pills = document.getElementById(`skill-scale-pills`);
+      const esEl = document.getElementById(`skill-sentence-es`);
+      const zhEl = document.getElementById(`skill-sentence-zh`);
+      if (!pills || !esEl || !zhEl) return;
+
+      pills.innerHTML = SKILL_LEVELS.map((lvl, idx) => `
+        <button type="button" class="scale-btn ${idx === appState.activeSkillIndex ? `is-active` : ``}" onclick="selectSkillLevel(${idx})">
+          ${lvl.label} · ${lvl.zhTag}
+        </button>
+      `).join(``);
+
+      const cur = SKILL_LEVELS[appState.activeSkillIndex] || SKILL_LEVELS[1];
+      esEl.textContent = cur.es;
+      zhEl.textContent = cur.zh;
+    }
+
+    function selectSkillLevel(idx) {
+      appState.activeSkillIndex = idx;
+      renderSkillScale();
+      persistState();
+    }
+
+    function speakSkillSentence() {
+      const esEl = document.getElementById(`skill-sentence-es`);
+      if (esEl) speakText(esEl.textContent);
+    }
+
+    // =========================================================================
+    // DIALOGUES
+    // =========================================================================
+    function renderDialogues() {
+      [`d1`, `d2`].forEach(dId => {
+        const container = document.getElementById(`dialogue-lines-${dId}`);
+        if (!container) return;
+        const lines = DIALOGUES[dId];
+        container.innerHTML = lines.map((line, idx) => `
+          <div class="dialogue-line" id="line-${dId}-${idx}">
+            <div>
+              <div>
+                <span class="speaker-tag">${line.speaker}</span>
+                <span class="dialogue-es">${line.es}</span>
+              </div>
+              <div class="dialogue-zh" data-dzh="${dId}">${line.zh}</div>
+            </div>
+            <button type="button" class="btn-icon" aria-label="朗读 ${line.speaker} 的台词" onclick="speakText('${escapeAttr(line.es)}', this)">
+              <i data-lucide="volume-2" width="15" height="15" aria-hidden="true"></i>
+            </button>
+          </div>
+        `).join(``);
+      });
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function toggleDialogueTranslation(dId, btn) {
+      const zhNodes = document.querySelectorAll(`[data-dzh="${dId}"]`);
+      if (!zhNodes.length) return;
+      const willHide = !zhNodes[0].classList.contains(`is-hidden`);
+      zhNodes.forEach(node => {
+        if (willHide) node.classList.add(`is-hidden`);
+        else node.classList.remove(`is-hidden`);
+      });
+      if (btn) {
+        const span = btn.querySelector(`span`);
+        if (span) span.textContent = willHide ? `显示中文译文` : `隐藏中文译文`;
+      }
+    }
+
+    // =========================================================================
+    // EXERCISES & SOLUTIONS
+    // =========================================================================
+    function renderExercises() {
+      const c1 = document.getElementById(`ex1-container`);
+      if (c1) {
+        c1.innerHTML = EX1_DATA.map((item, i) => `
+          <div class="exercise-item" id="ex1-item-${i}">
+            <div class="exercise-row">
+              <span class="exercise-num">${i + 1}.</span>
+              <label for="ex1-input-${i}" style="font-size:0.95rem;">
+                ${item.before}
+                <input type="text" id="ex1-input-${i}" class="styled-input" style="width:150px;" value="${escapeHtml(appState.ex1[i] || ``)}" oninput="saveEx1(${i}, this.value)" aria-label="练习1第${i + 1}题填空">
+                ${item.after}
+              </label>
+            </div>
+            <div class="exercise-feedback" id="ex1-fb-${i}"></div>
+          </div>
+        `).join(``);
+      }
+
+      const c2 = document.getElementById(`ex2-container`);
+      if (c2) {
+        c2.innerHTML = EX2_DATA.map((item, i) => `
+          <div class="exercise-item" id="ex2-item-${i}">
+            <div class="exercise-row">
+              <span class="exercise-num">${i + 1}.</span>
+              <label for="ex2-select-${i}" style="font-size:0.95rem;">
+                ${item.before}
+                <select id="ex2-select-${i}" class="styled-select" onchange="saveEx2(${i}, this.value)" aria-label="练习2第${i + 1}题选择">
+                  <option value="">-- 请选择 --</option>
+                  ${item.options.map(opt => `<option value="${opt}" ${appState.ex2[i] === opt ? `selected` : ``}>${opt}</option>`).join(``)}
+                </select>
+                ${item.after}
+              </label>
+            </div>
+            <div class="exercise-feedback" id="ex2-fb-${i}"></div>
+          </div>
+        `).join(``);
+      }
+
+      const c3 = document.getElementById(`ex3-container`);
+      if (c3) {
+        c3.innerHTML = EX3_DATA.map((item, i) => `
+          <div class="exercise-item" id="ex3-item-${i}">
+            <div class="field-group">
+              <label class="field-label" for="ex3-input-${i}">${i + 1}. 提示词：${item.prompt}</label>
+              <input type="text" id="ex3-input-${i}" class="styled-input" style="width:100%;" value="${escapeHtml(appState.ex3[i] || ``)}" oninput="saveEx3(${i}, this.value)">
+            </div>
+            <div class="exercise-feedback" id="ex3-fb-${i}"></div>
+          </div>
+        `).join(``);
+      }
+
+      const c4 = document.getElementById(`ex4-container`);
+      if (c4) {
+        c4.innerHTML = EX4_DATA.map((item, i) => `
+          <div class="exercise-item" id="ex4-item-${i}">
+            <div style="font-weight:600;"><span class="exercise-num">${i + 1}.</span> ${item.q}</div>
+            <div class="mc-options">
+              ${item.options.map((opt, optIdx) => `
+                <button type="button" class="mc-btn ${appState.ex4[i] === optIdx ? `is-selected` : ``}" onclick="selectEx4(${i}, ${optIdx})">
+                  ${opt}
+                </button>
+              `).join(``)}
+            </div>
+            <div class="exercise-feedback" id="ex4-fb-${i}"></div>
+          </div>
+        `).join(``);
+      }
+
+      renderSolutionsBody();
+      if (appState.graded) {
+        gradeAllExercises(true);
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, `&amp;`)
+        .replace(/"/g, `&quot;`)
+        .replace(/</g, `&lt;`)
+        .replace(/>/g, `&gt;`);
+    }
+
+    function saveEx1(i, val) {
+      appState.ex1[i] = val;
+      persistState();
+    }
+    function saveEx2(i, val) {
+      appState.ex2[i] = val;
+      persistState();
+    }
+    function saveEx3(i, val) {
+      appState.ex3[i] = val;
+      persistState();
+    }
+    function selectEx4(i, optIdx) {
+      appState.ex4[i] = optIdx;
+      const itemEl = document.getElementById(`ex4-item-${i}`);
+      if (itemEl) {
+        const btns = itemEl.querySelectorAll(`.mc-btn`);
+        btns.forEach((b, bIdx) => {
+          if (bIdx === optIdx) b.classList.add(`is-selected`);
+          else b.classList.remove(`is-selected`);
+        });
+      }
+      persistState();
+    }
+
+    function normalizeEs(str) {
+      return String(str || ``)
+        .trim()
+        .toLowerCase()
+        .replace(/[¿?¡!.]/g, ``)
+        .replace(/\s+/g, ` `);
+    }
+
+    function gradeAllExercises(silent) {
+      let correctCount = 0;
+      const total = EX1_DATA.length + EX2_DATA.length + EX3_DATA.length + EX4_DATA.length;
+
+      EX1_DATA.forEach((item, i) => {
+        const box = document.getElementById(`ex1-item-${i}`);
+        const fb = document.getElementById(`ex1-fb-${i}`);
+        const userVal = String(appState.ex1[i] || ``).trim().toLowerCase();
+        const isOk = userVal === item.answer.toLowerCase();
+        if (isOk) correctCount += 1;
+        if (box) {
+          box.classList.remove(`is-correct`, `is-wrong`);
+          box.classList.add(isOk ? `is-correct` : `is-wrong`);
+        }
+        if (fb) {
+          fb.className = `exercise-feedback ${isOk ? `is-ok` : `is-err`}`;
+          fb.textContent = isOk
+            ? `回答正确！(${item.note})`
+            : `参考答案：${item.answer}（${item.note}）`;
+        }
+      });
+
+      EX2_DATA.forEach((item, i) => {
+        const box = document.getElementById(`ex2-item-${i}`);
+        const fb = document.getElementById(`ex2-fb-${i}`);
+        const isOk = appState.ex2[i] === item.answer;
+        if (isOk) correctCount += 1;
+        if (box) {
+          box.classList.remove(`is-correct`, `is-wrong`);
+          box.classList.add(isOk ? `is-correct` : `is-wrong`);
+        }
+        if (fb) {
+          fb.className = `exercise-feedback ${isOk ? `is-ok` : `is-err`}`;
+          fb.textContent = isOk
+            ? `回答正确！(${item.note})`
+            : `参考答案：${item.answer}（${item.note}）`;
+        }
+      });
+
+      EX3_DATA.forEach((item, i) => {
+        const box = document.getElementById(`ex3-item-${i}`);
+        const fb = document.getElementById(`ex3-fb-${i}`);
+        const normUser = normalizeEs(appState.ex3[i]);
+        const isOk = normUser === normalizeEs(item.answer) || normUser === normalizeEs(item.alt);
+        if (isOk) correctCount += 1;
+        if (box) {
+          box.classList.remove(`is-correct`, `is-wrong`);
+          box.classList.add(isOk ? `is-correct` : `is-wrong`);
+        }
+        if (fb) {
+          fb.className = `exercise-feedback ${isOk ? `is-ok` : `is-err`}`;
+          fb.textContent = isOk
+            ? `回答正确！(${item.note})`
+            : `参考答案：${item.answer}（${item.note}）`;
+        }
+      });
+
+      EX4_DATA.forEach((item, i) => {
+        const box = document.getElementById(`ex4-item-${i}`);
+        const fb = document.getElementById(`ex4-fb-${i}`);
+        const isOk = appState.ex4[i] === item.answerIndex;
+        if (isOk) correctCount += 1;
+        if (box) {
+          box.classList.remove(`is-correct`, `is-wrong`);
+          box.classList.add(isOk ? `is-correct` : `is-wrong`);
+        }
+        if (fb) {
+          fb.className = `exercise-feedback ${isOk ? `is-ok` : `is-err`}`;
+          fb.textContent = isOk
+            ? `回答正确！(${item.note})`
+            : `正确答案：${item.options[item.answerIndex]}（${item.note}）`;
+        }
+      });
+
+      appState.graded = true;
+      const scoreEl = document.getElementById(`quiz-score-display`);
+      if (scoreEl) scoreEl.textContent = `${correctCount} / ${total} 题正确 (${Math.round((correctCount / total) * 100)}%)`;
+
+      const sideText = document.getElementById(`sidebar-quiz-count`);
+      const sideBar = document.getElementById(`sidebar-quiz-bar`);
+      if (sideText) sideText.textContent = `${correctCount} / ${total}`;
+      if (sideBar) sideBar.style.width = `${Math.round((correctCount / total) * 100)}%`;
+
+      if (!silent) persistState();
+    }
+
+    function handleResetQuiz(btn) {
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.innerHTML = `<i data-lucide="alert-circle" width="16" height="16" aria-hidden="true"></i><span>再次点击确认重置</span>`;
+        if (window.lucide) window.lucide.createIcons();
+        setTimeout(function () {
+          if (btn.dataset.armed === `true`) {
+            btn.dataset.armed = `false`;
+            btn.innerHTML = `<i data-lucide="rotate-ccw" width="16" height="16" aria-hidden="true"></i><span>重置作答</span>`;
+            if (window.lucide) window.lucide.createIcons();
+          }
+        }, 3500);
+        return;
+      }
+      btn.dataset.armed = `false`;
+      btn.innerHTML = `<i data-lucide="rotate-ccw" width="16" height="16" aria-hidden="true"></i><span>重置作答</span>`;
+      appState.ex1 = Array(EX1_DATA.length).fill(``);
+      appState.ex2 = Array(EX2_DATA.length).fill(``);
+      appState.ex3 = Array(EX3_DATA.length).fill(``);
+      appState.ex4 = Array(EX4_DATA.length).fill(-1);
+      appState.graded = false;
+      const scoreEl = document.getElementById(`quiz-score-display`);
+      if (scoreEl) scoreEl.textContent = `尚未批改（共 29 题）`;
+      const sideText = document.getElementById(`sidebar-quiz-count`);
+      const sideBar = document.getElementById(`sidebar-quiz-bar`);
+      if (sideText) sideText.textContent = `0 / 29`;
+      if (sideBar) sideBar.style.width = `0%`;
+      renderExercises();
+      persistState();
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function renderSolutionsBody() {
+      const body = document.getElementById(`solutions-body`);
+      if (!body) return;
+
+      let html = `<h4>练习 1：动词现在时变位参考答案</h4>`;
+      EX1_DATA.forEach((item, i) => {
+        const fullSent = `${item.before}${item.answer}${item.after.replace(/\s*\([^)]*\)/, ``)}`;
+        html += `
+          <div class="solution-item">
+            <div><strong>${i + 1}. ${item.answer}</strong> — ${fullSent}<br><small style="color:var(--on-surface-variant);">解析：${item.note}</small></div>
+            <button type="button" class="btn-icon" aria-label="朗读第${i + 1}题答案句子" onclick="speakText('${escapeAttr(fullSent)}')">
+              <i data-lucide="volume-2" width="15" height="15" aria-hidden="true"></i>
+            </button>
+          </div>
+        `;
+      });
+
+      html += `<h4 style="margin-top:var(--space-lg);">练习 2：Por / Para / Porque 参考答案</h4>`;
+      EX2_DATA.forEach((item, i) => {
+        const fullSent = `${item.before}${item.answer}${item.after}`;
+        html += `
+          <div class="solution-item">
+            <div><strong>${i + 1}. ${item.answer}</strong> — ${fullSent}<br><small style="color:var(--on-surface-variant);">解析：${item.note}</small></div>
+            <button type="button" class="btn-icon" aria-label="朗读第${i + 1}题答案句子" onclick="speakText('${escapeAttr(fullSent)}')">
+              <i data-lucide="volume-2" width="15" height="15" aria-hidden="true"></i>
+            </button>
+          </div>
+        `;
+      });
+
+      html += `<h4 style="margin-top:var(--space-lg);">练习 3：Querer + Infinitivo 改写参考答案</h4>`;
+      EX3_DATA.forEach((item, i) => {
+        html += `
+          <div class="solution-item">
+            <div><strong>${i + 1}. ${item.answer}</strong><br><small style="color:var(--on-surface-variant);">解析：${item.note}</small></div>
+            <button type="button" class="btn-icon" aria-label="朗读第${i + 1}题答案句子" onclick="speakText('${escapeAttr(item.answer)}')">
+              <i data-lucide="volume-2" width="15" height="15" aria-hidden="true"></i>
+            </button>
+          </div>
+        `;
+      });
+
+      html += `<h4 style="margin-top:var(--space-lg);">练习 4：阅读理解参考答案</h4>`;
+      EX4_DATA.forEach((item, i) => {
+        html += `
+          <div class="solution-item">
+            <div><strong>${i + 1}. ${item.options[item.answerIndex]}</strong><br><small style="color:var(--on-surface-variant);">解析：${item.note}</small></div>
+          </div>
+        `;
+      });
+
+      body.innerHTML = html;
+      applySolutionsPanelVisibility();
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function applySolutionsPanelVisibility() {
+      const body = document.getElementById(`solutions-body`);
+      const btn = document.getElementById(`btn-toggle-solutions`);
+      if (!body || !btn) return;
+      if (appState.solutionsOpen) {
+        body.classList.remove(`is-collapsed`);
+        btn.innerHTML = `<i data-lucide="chevron-up" width="16" height="16" aria-hidden="true"></i><span>收起参考答案</span>`;
+      } else {
+        body.classList.add(`is-collapsed`);
+        btn.innerHTML = `<i data-lucide="chevron-down" width="16" height="16" aria-hidden="true"></i><span>展开查看详细参考答案</span>`;
+      }
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function toggleSolutionsPanel() {
+      appState.solutionsOpen = !appState.solutionsOpen;
+      applySolutionsPanelVisibility();
+      persistState();
+    }
+
+    // =========================================================================
+    // NAVIGATION & SCROLL SPY
+    // =========================================================================
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: `smooth` });
+    }
+
+    function setupScrollSpy() {
+      const sections = document.querySelectorAll(`.lesson-section`);
+      const tocLinks = document.querySelectorAll(`.toc-link`);
+      const mobBtns = document.querySelectorAll(`.floating-nav-btn`);
+      if (!(`IntersectionObserver` in window) || !sections.length) return;
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const activeId = entry.target.id;
+            tocLinks.forEach(link => {
+              if (link.dataset.section === activeId) link.classList.add(`is-active`);
+              else link.classList.remove(`is-active`);
+            });
+            const idxMap = {
+              'sec-objetivos': 0,
+              'sec-lexico': 1,
+              'sec-gramatica': 2,
+              'sec-dialogos': 3,
+              'sec-ejercicios': 4
+            };
+            const mIdx = idxMap[activeId];
+            if (typeof mIdx === `number`) {
+              mobBtns.forEach((btn, i) => {
+                if (i === mIdx) btn.classList.add(`is-active`);
+                else if (i < 5) btn.classList.remove(`is-active`);
+              });
+            }
+          }
+        });
+      }, { rootMargin: `-20% 0px -65% 0px`, threshold: 0 });
+
+      sections.forEach(sec => observer.observe(sec));
+    }
+
+    // =========================================================================
+    // INITIALIZATION
+    // =========================================================================
+    async function initApp() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+        try {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            appState = Object.assign({}, appState, saved);
+          }
+        } catch (err) {
+          // Proceed with defaults
+        }
+      }
+
+      const rateSel = document.getElementById(`speech-rate-select`);
+      if (rateSel) rateSel.value = String(appState.speechRate);
+      const seqSel = document.getElementById(`seq-mode-select`);
+      if (seqSel) seqSel.value = appState.seqMode;
+      const filterSel = document.getElementById(`vocab-filter-select`);
+      if (filterSel) filterSel.value = appState.vocabFilter;
+
+      renderVocabGroups();
+      updateQuererLab();
+      renderVerbSwitcher();
+      renderSkillScale();
+      renderDialogues();
+      renderExercises();
+      setupScrollSpy();
+
+      if (window.lucide) window.lucide.createIcons();
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initApp);
+  </script>
+</body>
+</html>
